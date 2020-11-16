@@ -83,7 +83,7 @@ public class MySQLConnection {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }finally {
-             disconnect();
+            //disconnect();
         }
         return output;
     }

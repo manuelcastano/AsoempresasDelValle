@@ -1,5 +1,6 @@
 package model.provider;
 
+import db.MySQLConnection;
 import db.PoolConnection;
 import entity.Companies;
 import model.dto.CompaniesDTO;
@@ -33,7 +34,7 @@ public class CompaniesProvider {
 
     public boolean existCompany(int id){
         boolean t = false;
-        ArrayList<Companies> compañias = new ArrayList<Companies>();
+        ArrayList<Companies> compañias = getAllCompanies();
 
         for(int i = 0; i < compañias.size() & !t ;i++){
 
@@ -49,9 +50,10 @@ public class CompaniesProvider {
 
     public ArrayList<Companies> getAllCompanies(){
         ArrayList<Companies> compañias = new ArrayList<Companies>();
+        MySQLConnection mysql = pool.getConexion();
         try {
-            String sql = "SELECT id, name, password,sectorID FROM company";
-            ResultSet resultset = pool.getConexion().Query(sql);
+            String sql = "SELECT * FROM company";
+            ResultSet resultset = mysql.Query(sql);
 
             while(resultset.next()){
                 compañias.add(new Companies(
@@ -65,6 +67,7 @@ public class CompaniesProvider {
         }catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        mysql.disconnect();
         return compañias;
     }
 

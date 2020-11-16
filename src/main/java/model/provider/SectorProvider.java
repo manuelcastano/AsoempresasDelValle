@@ -1,5 +1,6 @@
 package model.provider;
 
+import db.MySQLConnection;
 import db.PoolConnection;
 import entity.Companies;
 import entity.Sector;
@@ -36,10 +37,10 @@ public class SectorProvider {
 
     public ArrayList<Sector> getAllSectores(){
         ArrayList<Sector> sectores = new ArrayList<Sector>();
-
+        MySQLConnection mysql = pool.getConexion();
         try {
             String sql = "SELECT id, name FROM sectores";
-            ResultSet resultset = pool.getConexion().Query(sql);
+            ResultSet resultset = mysql.Query(sql);
 
             while(resultset.next()){
                 sectores.add(new Sector(
@@ -51,7 +52,7 @@ public class SectorProvider {
         }catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
+        mysql.disconnect();
         return sectores;
 
     }

@@ -3,14 +3,12 @@ package services;
 import config.Response;
 import entity.MarketingExpenses;
 import model.dto.MarketingExpensesDTO;
+import model.provider.CompaniesProvider;
 import model.provider.MarketingExpensesProvider;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Produces;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 
 @Stateless
 @Path("mes")
@@ -21,7 +19,7 @@ public class MarketingExpensesServices {
     @Path("create")
     public Response createMarketingExpenses(MarketingExpensesDTO marke){
         MarketingExpensesProvider provider = new MarketingExpensesProvider();
-
+        CompaniesProvider compa = new CompaniesProvider();
         if(provider.createMarketingExtenses(provider.mapFromDTO(marke))){
             return new Response("Operacion exitosa");
         }else{
@@ -30,6 +28,27 @@ public class MarketingExpensesServices {
 
 
     }
+
+    @DELETE
+    @Path("{id}")
+    public Response delateMarketingExpenses(@PathParam("id") String id){
+        MarketingExpensesProvider provider = new MarketingExpensesProvider();
+        provider.delateMarketingExtenses(Integer.parseInt(id));
+        return new Response("Operacion Exitosa");
+    }
+
+    @PUT
+    @Path("{id}")
+    public Response updateMarketingExpenses(@PathParam("id") String id, MarketingExpensesDTO marke){
+        MarketingExpensesProvider provider = new MarketingExpensesProvider();
+        if(provider.updateMarketingExtenses(Integer.parseInt(id),provider.mapFromDTO(marke))){
+            return new Response("Operacion exitosa" + "xsadsad");
+        }else{
+            return new Response("No se pudo hacer");
+        }
+
+    }
+
 
 
 
