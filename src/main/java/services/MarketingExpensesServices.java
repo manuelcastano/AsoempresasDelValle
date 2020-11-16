@@ -1,7 +1,9 @@
 package services;
 
 import config.Response;
+import entity.MarketingExpenses;
 import model.dto.MarketingExpensesDTO;
+import model.provider.MarketingExpensesProvider;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Produces;
@@ -18,8 +20,17 @@ public class MarketingExpensesServices {
     @Consumes("application/json")
     @Path("create")
     public Response createMarketingExpenses(MarketingExpensesDTO marke){
+        MarketingExpensesProvider provider = new MarketingExpensesProvider();
 
-        return new Response("Operacion exitosa");
+        if(provider.createMarketingExtenses(provider.mapFromDTO(marke))){
+            return new Response("Operacion exitosa");
+        }else{
+            return new Response("No hay ninguna compañia");
+        }
+
+
     }
+
+
 
 }

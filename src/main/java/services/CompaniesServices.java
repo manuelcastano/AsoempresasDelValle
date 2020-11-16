@@ -22,9 +22,11 @@ public class CompaniesServices {
 
         CompaniesProvider companyProvider = new CompaniesProvider();
 
-        companyProvider.InsertCompanies(companyProvider.mapFromDTO(company));
-
-        return new Response("Operacion exitosa");
+        if(companyProvider.InsertCompanies(companyProvider.mapFromDTO(company))){
+            return new Response("Operacion exitosa");
+        }else{
+            return new Response("No se encontro el sector existente");
+        }
 
     }
 
