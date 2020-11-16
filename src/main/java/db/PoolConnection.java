@@ -43,11 +43,13 @@ public class PoolConnection {
     }
 
     public void generateMoreConexions(){
-        for (int i = 0; i < 8; i++){
+        for (int i = 0; i < 8
+                ; i++){
             MySQLConnection sql = new MySQLConnection();
             sql.connect();
             sql.createDatabase();
             conexiones.add(sql);
         }
     }
+
 }

@@ -42,12 +42,10 @@ public class MySQLConnection {
         try {
             connect();
             Statement statement = connection.createStatement();
-            statement.execute("CREATE TABLE IF NOT EXISTS profesores(id INT PRIMARY  KEY AUTO_INCREMENT,nombre VARCHAR(100), facultad VARCHAR(100) )");
-            statement.execute("CREATE TABLE IF NOT EXISTS cursos(id INT PRIMARY  KEY AUTO_INCREMENT,nombre VARCHAR(100), programa VARCHAR(100), profesorID INT, " + "FOREIGN  KEY (profesorID) REFERENCES profesores(id))");
-            statement.execute("CREATE TABLE IF NOT EXISTS estudiante(id INT PRIMARY  KEY AUTO_INCREMENT,nombre VARCHAR(100), codigo VARCHAR(100) )");
-            statement.execute("CREATE TABLE IF NOT EXISTS estudiantes_cursos(id INT PRIMARY KEY AUTO_INCREMENT, estudianteID INT, cursoID INT, " +
-                    "FOREIGN KEY (estudianteID) REFERENCES estudiantes(id), " +
-                    "FOREIGN KEY (cursoID) REFERENCES cursos(id))");
+            statement.execute("CREATE TABLE IF NOT EXISTS sectores(id INT PRIMARY  KEY AUTO_INCREMENT,name VARCHAR(50))");
+            statement.execute("CREATE TABLE IF NOT EXISTS company(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(50), password VARCHAR(50), sectorID INT, FOREIGN KEY (sectorID) REFERENCES sectores(id))");
+            statement.execute("CREATE TABLE IF NOT EXISTS marketingExpenses(id INT PRIMARY  KEY AUTO_INCREMENT, value INT, date VARCHAR (100), companyID INT, FOREIGN KEY (companyID) REFERENCES company(id)) ");
+            statement.execute("CREATE TABLE IF NOT EXISTS indebtedness(id INT PRIMARY  KEY AUTO_INCREMENT, value INT, date VARCHAR (100), companyID INT, FOREIGN KEY (companyID) REFERENCES company(id)) ");
             succes = true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();

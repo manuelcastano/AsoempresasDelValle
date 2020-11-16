@@ -5,18 +5,16 @@ public class MarketingExpensesDTO {
     private int id;
     private int value;
     private String date;
-    private int companyID;
     private CompaniesDTO companies;
 
 
     public MarketingExpensesDTO() {
     }
 
-    public MarketingExpensesDTO(int id, int value, String date, int companyID, CompaniesDTO companies) {
+    public MarketingExpensesDTO(int id, int value, String date, CompaniesDTO companies) {
         this.id = id;
         this.value = value;
         this.date = date;
-        this.companyID = companyID;
         this.companies = companies;
     }
 
@@ -42,14 +40,6 @@ public class MarketingExpensesDTO {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public int getCompanyID() {
-        return companyID;
-    }
-
-    public void setCompanyID(int companyID) {
-        this.companyID = companyID;
     }
 
     public CompaniesDTO getCompanies() {

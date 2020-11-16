@@ -7,7 +7,6 @@ public class CompaniesDTO {
     private int id;
     private String name;
     private String password;
-    private int sectorID;
     private ArrayList<EmployeesDTO> empleados;
     private SectorsDTO sector;
     private ArrayList<SurveysDTO> surveys;
@@ -19,13 +18,12 @@ public class CompaniesDTO {
     public CompaniesDTO() {
     }
 
-    public CompaniesDTO(int id, String name, String password, int sectorID, ArrayList<EmployeesDTO> empleados, SectorsDTO sector, ArrayList<SurveysDTO> surveys,
+    public CompaniesDTO(int id, String name, String password,  ArrayList<EmployeesDTO> empleados, SectorsDTO sector, ArrayList<SurveysDTO> surveys,
                         ArrayList<PeriodicExpensesDTO> periodics, ArrayList<MarketingExpensesDTO> marketings,
                         ArrayList<IndebtednessDTO> indebtedness, ArrayList<ReportsDTO> reports) {
         this.id = id;
         this.name = name;
         this.password = password;
-        this.sectorID = sectorID;
         this.empleados = empleados;
         this.sector = sector;
         this.surveys = surveys;
@@ -57,14 +55,6 @@ public class CompaniesDTO {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getSectorID() {
-        return sectorID;
-    }
-
-    public void setSectorID(int sectorID) {
-        this.sectorID = sectorID;
     }
 
     public ArrayList<EmployeesDTO> getEmpleados() {
