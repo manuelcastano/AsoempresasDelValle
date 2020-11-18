@@ -1,6 +1,5 @@
 package db;
 
-import javax.ejb.Stateless;
 import java.sql.*;
 
 public class MySQLConnection {
@@ -42,10 +41,10 @@ public class MySQLConnection {
         try {
             connect();
             Statement statement = connection.createStatement();
-            statement.execute("CREATE TABLE IF NOT EXISTS sectores(id INT PRIMARY KEY AUTO_INCREMENT,name VARCHAR(50))");
-            statement.execute("CREATE TABLE IF NOT EXISTS company(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(50), password VARCHAR(50), sectorID INT, FOREIGN KEY (sectorID) REFERENCES sectores(id))");
-            statement.execute("CREATE TABLE IF NOT EXISTS marketingExpenses(id INT PRIMARY  KEY AUTO_INCREMENT, value INT, date VARCHAR (100), companyID INT, FOREIGN KEY (companyID) REFERENCES company(id)) ");
-            statement.execute("CREATE TABLE IF NOT EXISTS indebtedness(id INT PRIMARY  KEY AUTO_INCREMENT, value INT, date VARCHAR (100), companyID INT, FOREIGN KEY (companyID) REFERENCES company(id)) ");
+            statement.execute("CREATE TABLE IF NOT EXISTS reports(id INT PRIMARY KEY AUTO_INCREMENT,start_date VARCHAR(100),purchase VARCHAR(100), companyID INT, FOREIGN  KEY  (companyID) REFERENCES  companies(id))");
+            statement.execute("CREATE TABLE IF NOT EXISTS employees(id INT PRIMARY KEY AUTO_INCREMENT,user VARCHAR(100),password VARCHAR(100), companyID INT, FOREIGN  KEY  (companyID) REFERENCES  companies(id))");
+            statement.execute("CREATE TABLE IF NOT EXISTS companies(id INT PRIMARY KEY AUTO_INCREMENT,name VARCHAR(100),password VARCHAR(100), sectorID INT, FOREIGN  KEY  (sectorID) REFERENCES  sectors(id))");
+            statement.execute("CREATE TABLE IF NOT EXISTS sectors(id INT PRIMARY KEY AUTO_INCREMENT,name VARCHAR(100)");
             succes = true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -83,7 +82,7 @@ public class MySQLConnection {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }finally {
-            //disconnect();
+            // disconnect();
         }
         return output;
     }
@@ -95,5 +94,8 @@ public class MySQLConnection {
     public void setInUse(boolean inUse) {
         this.inUse = inUse;
     }
+
+
+
 
 }

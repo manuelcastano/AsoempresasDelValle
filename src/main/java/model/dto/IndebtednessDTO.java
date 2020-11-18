@@ -5,15 +5,17 @@ public class IndebtednessDTO {
     private int id;
     private int value;
     private String date;
+    private int companyID;
     private CompaniesDTO companies;
 
     public IndebtednessDTO() {
     }
 
-    public IndebtednessDTO(int id, int value, String date, CompaniesDTO companies) {
+    public IndebtednessDTO(int id, int value, String date, int companyID, CompaniesDTO companies) {
         this.id = id;
         this.value = value;
         this.date = date;
+        this.companyID = companyID;
         this.companies = companies;
     }
 
@@ -39,6 +41,14 @@ public class IndebtednessDTO {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getCompanyID() {
+        return companyID;
+    }
+
+    public void setCompanyID(int companyID) {
+        this.companyID = companyID;
     }
 
     public CompaniesDTO getCompanies() {

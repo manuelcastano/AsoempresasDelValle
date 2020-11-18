@@ -5,15 +5,17 @@ public class PeriodicExpensesDTO {
     private int id;
     private int value;
     private String date;
+    private int companyID;
     private CompaniesDTO companies;
 
     public PeriodicExpensesDTO() {
     }
 
-    public PeriodicExpensesDTO(int id, int value, String date, CompaniesDTO companies) {
+    public PeriodicExpensesDTO(int id, int value, String date, int companyID, CompaniesDTO companies) {
         this.id = id;
         this.value = value;
         this.date = date;
+        this.companyID = companyID;
         this.companies = companies;
     }
 
@@ -41,6 +43,13 @@ public class PeriodicExpensesDTO {
         this.date = date;
     }
 
+    public int getCompanyID() {
+        return companyID;
+    }
+
+    public void setCompanyID(int companyID) {
+        this.companyID = companyID;
+    }
 
     public CompaniesDTO getCompanies() {
         return companies;
