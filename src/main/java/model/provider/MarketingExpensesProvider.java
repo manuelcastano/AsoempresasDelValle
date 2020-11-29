@@ -11,7 +11,10 @@ import model.dto.SectorsDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MarketingExpensesProvider {
 
@@ -86,9 +89,23 @@ public class MarketingExpensesProvider {
 
     public MarketingExpenses mapFromDTO(MarketingExpensesDTO marketing){
         MarketingExpenses mark = new MarketingExpenses();
-        mark.setValue(marketing.getValue());
-        mark.setDate(marketing.getDate());
-        mark.setCompanyID(marketing.getCompanies().getId());
+
+
+        try{
+
+            mark.setValue(marketing.getValue());
+            String msj = marketing.getDate();
+            SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+            Date d = (Date)f.parse(msj);
+            long milliseconds = d.getTime();
+            mark.setDate(milliseconds);
+            mark.setCompanyID(marketing.getCompanies().getId());
+        }catch (ParseException e){
+
+        }
+
+
+
 
         return mark;
     }
