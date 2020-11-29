@@ -9,7 +9,10 @@ import model.dto.MarketingExpensesDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class IndebtednessProvider {
 
@@ -79,9 +82,19 @@ public class IndebtednessProvider {
 
     public Indebtedness mapFromDTO(IndebtednessDTO indeb){
         Indebtedness in = new Indebtedness();
-        in.setValue(indeb.getValue());
-        in.setDate(indeb.getDate());
-        in.setCompanyID(indeb.getCompanies().getId());
+
+        try{
+            in.setValue(indeb.getValue());
+            String msj = indeb.getDate();
+            SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+            Date d = (Date)f.parse(msj);
+            long milliseconds = d.getTime();
+            in.setDate(milliseconds);
+            in.setCompanyID(indeb.getCompanies().getId());
+        }catch(ParseException e){
+            e.printStackTrace();
+        }
+
         return in;
     }
 
