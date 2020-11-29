@@ -25,7 +25,7 @@ public class MarketingExpensesProvider {
             t = true;
             String sql = "INSERT INTO marketingExpenses(value,date,companyID) VALUES ('$value','$date','$companyID')";
             sql = sql.replace("$value","" + mark.getValue());
-            sql = sql.replace("$date", mark.getDate());
+            sql = sql.replace("$date", "" + mark.getDate());
             sql = sql.replace("$companyID", "" + mark.getCompanyID());
             pool.getConexion().executeSQL(sql);
         }
@@ -46,7 +46,7 @@ public class MarketingExpensesProvider {
                 marketings.add(new MarketingExpenses(
                                 resultset.getInt(1),
                                 resultset.getInt(2),
-                                resultset.getString(3),
+                                resultset.getLong(3),
                                 resultset.getInt(4)
                         )
                 );
@@ -68,7 +68,7 @@ public class MarketingExpensesProvider {
                 String sql = "UPDATE marketingExpenses SET marketingExpenses.value = $VALUE, marketingExpenses.date = '$DATE' WHERE marketingExpenses.id = $ID";
                 sql = sql.replace("$ID","" + id);
                 sql = sql.replace("$VALUE","" + mark.getValue());
-                sql = sql.replace("$DATE", mark.getDate());
+                sql = sql.replace("$DATE", "" + mark.getDate());
                 pool.getConexion().executeSQL(sql);
                 t = true;
             }

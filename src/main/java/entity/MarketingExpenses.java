@@ -4,13 +4,13 @@ public class MarketingExpenses {
 
     private int id;
     private int value;
-    private String date;
+    private long date;
     private int companyID;
 
     public MarketingExpenses() {
     }
 
-    public MarketingExpenses(int id, int value, String date, int companyID) {
+    public MarketingExpenses(int id, int value, long date, int companyID) {
         this.id = id;
         this.value = value;
         this.date = date;
@@ -33,11 +33,11 @@ public class MarketingExpenses {
         this.value = value;
     }
 
-    public String getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(long date) {
         this.date = date;
     }
 

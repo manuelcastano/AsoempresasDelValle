@@ -28,7 +28,7 @@ public class IndebtednessProvider {
             t = true;
             String sql = "INSERT INTO indebtedness(value,date,companyID) VALUES ('$value','$date','$companyID')";
             sql = sql.replace("$value","" + indeb.getValue());
-            sql = sql.replace("$date", indeb.getDate());
+            sql = sql.replace("$date", "" + indeb.getDate());
             sql = sql.replace("$companyID", "" + indeb.getCompanyID());
             pool.getConexion().executeSQL(sql);
         }
@@ -47,7 +47,7 @@ public class IndebtednessProvider {
                 indebtedness.add(new Indebtedness(
                                 resultset.getInt(1),
                                 resultset.getInt(2),
-                                resultset.getString(3),
+                                resultset.getLong(3),
                                 resultset.getInt(4)
                         )
                 );
@@ -68,7 +68,7 @@ public class IndebtednessProvider {
                 String sql = "UPDATE indebtedness SET indebtedness.value = $VALUE, indebtedness.date = '$DATE' WHERE indebtedness.id = $ID";
                 sql = sql.replace("$ID","" + id);
                 sql = sql.replace("$VALUE","" + indeb.getValue());
-                sql = sql.replace("$DATE", indeb.getDate());
+                sql = sql.replace("$DATE", "" + indeb.getDate());
                 pool.getConexion().executeSQL(sql);
                 t = true;
             }

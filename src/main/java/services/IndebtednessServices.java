@@ -28,7 +28,7 @@ public class IndebtednessServices {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("delete/{id}")
     public Response delateMarketingExpenses(@PathParam("id") String id){
         IndebtednessProvider provider = new IndebtednessProvider();
         provider.delateIndebtednessProvider(Integer.parseInt(id));

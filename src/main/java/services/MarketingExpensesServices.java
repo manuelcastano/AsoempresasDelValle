@@ -30,7 +30,7 @@ public class MarketingExpensesServices {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("delete/{id}")
     public Response delateMarketingExpenses(@PathParam("id") String id){
         MarketingExpensesProvider provider = new MarketingExpensesProvider();
         provider.delateMarketingExtenses(Integer.parseInt(id));
