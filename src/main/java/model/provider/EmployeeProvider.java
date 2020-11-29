@@ -7,6 +7,7 @@ import model.dto.EmployeesDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmployeeProvider {
 
@@ -43,5 +44,33 @@ public class EmployeeProvider {
             throwables.printStackTrace();
         }
         return result;
+    }
+
+    public void removeEmployee(String user) {
+        String sql = "DELETE FROM employees WHERE employees.user="+user;
+        pool.getConexion().executeSQL(sql);
+    }
+
+    public ArrayList<Employee> getAllEmployees(){
+        ArrayList<Employee> employees = new ArrayList<Employee>();
+        MySQLConnection mySQLConnection = pool.getConexion();
+        String sql = "SELECT * FROM employees ";
+        ResultSet resultSet = mySQLConnection.Query(sql);
+
+        while(true){
+            try {
+                while (resultSet.next()){
+                    employees.add(new Employee(
+                            resultSet.getInt(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3))
+                    );
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            mySQLConnection.disconnect();
+            return employees;
+        }
     }
 }

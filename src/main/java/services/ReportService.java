@@ -2,7 +2,7 @@ package services;
 
 
 import model.dto.ReportsDTO;
-import model.dto.Response;
+import model.dto.*;
 import model.provider.ReportProvider;
 
 import javax.ejb.Stateless;

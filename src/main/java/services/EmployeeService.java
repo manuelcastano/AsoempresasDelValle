@@ -7,6 +7,7 @@ import model.provider.EmployeeProvider;
 import javax.ejb.Stateless;
 import javax.ws.rs.*;
 
+
 @Path("employee")
 @Stateless
 public class EmployeeService {
@@ -21,6 +22,14 @@ public class EmployeeService {
         return new Response("Operacion exitosa");
     }
 
+    @DELETE
+    @Path("delete")
+    public Response deleteEmoloyee(String user){
+        EmployeeProvider employeeProvider = new EmployeeProvider();
+        employeeProvider.removeEmployee(user);
+        return new Response("Operacion exitosa");
+    }
+
     @GET
     @Path("login")
     @Consumes("application/json")
@@ -29,8 +38,5 @@ public class EmployeeService {
         EmployeeProvider employeeProvider = new EmployeeProvider();
         return employeeProvider.login(user, password);
     }
-
-
-
 
 }

@@ -11,7 +11,7 @@ public class Employee {
 
     }
 
-    public Employee(int ID, String user, String password, int companyID) {
+    public Employee(int ID, String user, String password) {
         this.ID = ID;
         this.user = user;
         this.password = password;

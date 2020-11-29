@@ -7,7 +7,10 @@ import model.dto.ReportsDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ReportProvider {
 
@@ -15,17 +18,29 @@ public class ReportProvider {
 
     public Report map(ReportsDTO reportDTO) {
         Report report = new Report();
-        report.setPurchase(reportDTO.getPurchaseDate());
-        report.setStartDate(reportDTO.getStartDate());
-        report.setCompanyID(reportDTO.getCompanies().getId());
+        try {
+            String msj = reportDTO.getPurchaseDate();
+            SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+            Date d = (Date) f.parse(msj);
+            long milliseconds = d.getTime();
+            report.setPurchase(milliseconds);
+            String msj2 = reportDTO.getStartDate();
+            SimpleDateFormat f2 = new SimpleDateFormat("dd-MM-yyyy");
+            Date d2 = (Date) f.parse(msj);
+            long millisecond2 = d.getTime();
+            report.setStartDate(millisecond2);
+            report.setCompanyID(reportDTO.getCompanies().getId());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return report;
     }
 
     public void insertReport(Report report) {
         MySQLConnection connection = new MySQLConnection();
         String sql = "INSERT INTO reports (start_date,purchase, companyID) VALUES ('$start_date','$purchase','$companyID') ";
-        sql = sql.replace("$start_date", report.getStartDate());
-        sql = sql.replace("$purchase", report.getPurchase());
+        sql = sql.replace("$start_date", ""+report.getStartDate());
+        sql = sql.replace("$purchase", ""+report.getPurchase());
         sql = sql.replace("$companyID", ""+report.getCompanyID());
         connection.executeSQL(sql);
     }
