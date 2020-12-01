@@ -1,18 +1,11 @@
 #principal{
 
-    height: 950px;
+    height: 1000px;
+    width: 900px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     
-    border-style: dotted;
-
-    background: -webkit-linear-gradient(to right, #ffd45293, #544a7d91), url("/assets/background.jpg");  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #ffd4528a, #544a7d8f), url("/assets/background.jpg"); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
     position: relative;
     margin: 0 auto;
 }
@@ -52,4 +45,14 @@
 
     max-width: 85%;
     max-height: 150%;
+}
+
+#body{
+    background-color: black;
+    background: -webkit-linear-gradient(to right, #ffd45293, #544a7d91), url("/assets/background.jpg");  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffd4528a, #544a7d8f), url("/assets/background.jpg"); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
