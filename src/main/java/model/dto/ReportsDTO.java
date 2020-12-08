@@ -14,7 +14,6 @@ public class ReportsDTO {
         this.id = id;
         this.startDate = startDate;
         this.purchaseDate = purchaseDate;
-
         this.companies = companies;
     }
 
@@ -41,7 +40,6 @@ public class ReportsDTO {
     public void setPurchaseDate(String purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
-
 
     public CompaniesDTO getCompanies() {
         return companies;

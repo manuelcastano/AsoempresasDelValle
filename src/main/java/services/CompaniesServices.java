@@ -1,33 +1,50 @@
 package services;
 
+import javax.ejb.Stateless;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 
-import config.Response;
+
 import model.dto.CompaniesDTO;
 import model.provider.CompaniesProvider;
 
-import javax.ejb.Stateless;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
 
+@Path("company")
 @Stateless
-@Path("cs")
 public class CompaniesServices {
 
-    @POST
-    @Consumes("application/json")
-    @Path("create")
-    public Response createCompanie(CompaniesDTO company) {
-
-        CompaniesProvider companyProvider = new CompaniesProvider();
-
-        if(companyProvider.InsertCompanies(companyProvider.mapFromDTO(company))){
-            return new Response("Operacion exitosa");
-        }else{
-            return new Response("No se encontro el sector existente");
-        }
-
+    @GET
+    @Path("best/{initialDate}/{finalDate}")
+    @Produces("application/json")
+    public CompaniesDTO bestCompany(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
+        long initial = Long.parseLong(iDate);
+        long finalDate = Long.parseLong(fDate);
+        CompaniesProvider provider = new CompaniesProvider();
+        return provider.getBest(initial,finalDate);
     }
+
+    @GET
+    @Path("best/{initialDate}/{finalDate}")
+    @Produces("application/json")
+    public CompaniesDTO worstCompany(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
+        long initial = Long.parseLong(iDate);
+        long finalDate = Long.parseLong(fDate);
+        CompaniesProvider provider = new CompaniesProvider();
+        return provider.getWorst(initial,finalDate);
+    }
+
+    @GET
+    @Path("best/{initialDate}/{finalDate}")
+    @Produces("application/json")
+    public CompaniesDTO averageCompany(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
+        long initial = Long.parseLong(iDate);
+        long finalDate = Long.parseLong(fDate);
+        CompaniesProvider provider = new CompaniesProvider();
+        return provider.getAverage(initial,finalDate);
+    }
+
+
 
 }
