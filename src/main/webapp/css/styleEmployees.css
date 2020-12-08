@@ -6,6 +6,17 @@
 
 body{
     font-family: Arial;
+    margin: 0 auto;
+    
+    /* Cambiar la imagen "Company"*/
+    background: -webkit-linear-gradient(to right, #bfe8ff93, #aa99f091), url("/assets/company.jpg");  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #b9eeff5b, #afa1e78f), url("/assets/company.jpg"); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    margin: 0 auto;
 }
 .form-add {
     width: 400px;
@@ -85,3 +96,48 @@ body{
     font-size: 16px;
     font-weight: bold;  
 }
+
+.title{
+    width: 600px;
+    height: 500px;
+    margin: auto;
+    text-align: center;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid;
+    font-size: 20px;
+    color: #fdfdfd;
+
+}
+table {
+        margin: AUTO;
+        width: 80%;
+        height: 20%;
+}
+tr, td {
+    width: 10%;
+}
+
+.buttonsTable {
+    width: 60%;
+    height: 40px;
+    background: #017bab;
+    box-shadow: 7px 13px 37px #000;
+    border:none;
+    color:white;
+    margin-bottom: 16px;
+}
+
+.button{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 20%;
+    height: 40px;
+    background: #017bab;
+    border:none;
+    color:white;
+    box-shadow: 10px 20px 40px #000;
+
+}
+
+
