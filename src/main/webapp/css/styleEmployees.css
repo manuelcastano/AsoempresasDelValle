@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial;
+    margin: 0 auto;
+    
+    /* Cambiar la imagen "Company"*/
+    background: -webkit-linear-gradient(to right, #bfe8ff93, #aa99f091), url("/assets/company.jpg");  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #b9eeff5b, #afa1e78f), url("/assets/company.jpg"); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    margin: 0 auto;
+}
+.form-add {
+    width: 400px;
+    height: 340px;
+    background: #71bbd8;
+    margin: auto;
+    margin-top: 50px;
+    box-shadow: 7px 13px 37px #000;
+    padding: 20px 30px;
+    border-top: 4px solid #017bab;
+    color: #ffffff;
+}
+
+.form-add h5 {
+    margin: 0;
+    text-align: center;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid;
+    font-size: 20px;
+}
+
+.controls{
+    width: 100%;
+    border: 1px solid #017bab;
+    margin-bottom:  15px;
+    padding: 11px 10px;
+    background: #fdfdfd;
+    font-size: 14px;
+    font-weight: bold;  
+}
+
+.buttons {
+    width: 100%;
+    height: 40px;
+    background: #017bab;
+    border:none;
+    color:white;
+    margin-bottom: 16px;
+}
+
+.form-add p{
+    height: 40px;
+    text-align: center;
+    border-bottom: 1px solid;
+}
+
+.form-add a{
+    color:white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.form-add a:hover{
+    text-decoration: underline;
+}
+
+
+.form-employees h5 {
+    width: 600px;
+    height: 500px;
+    margin: auto;
+    text-align: center;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid;
+    font-size: 20px;
+}
+
+.search{
+    margin: auto;
+    width: 30%;
+    border: 1px solid #017bab;
+    margin-bottom:  15px;
+    padding: 11px 10px;
+    background: #fdfdfd;
+    font-size: 16px;
+    font-weight: bold;  
+}
+
+.title{
+    width: 600px;
+    height: 500px;
+    margin: auto;
+    text-align: center;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid;
+    font-size: 20px;
+    color: #fdfdfd;
+
+}
+table {
+        margin: AUTO;
+        width: 80%;
+        height: 20%;
+}
+tr, td {
+    width: 10%;
+}
+
+.buttonsTable {
+    width: 60%;
+    height: 40px;
+    background: #017bab;
+    box-shadow: 7px 13px 37px #000;
+    border:none;
+    color:white;
+    margin-bottom: 16px;
+}
+
+.button{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 20%;
+    height: 40px;
+    background: #017bab;
+    border:none;
+    color:white;
+    box-shadow: 10px 20px 40px #000;
+
+}
+
+
