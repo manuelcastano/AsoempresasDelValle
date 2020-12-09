@@ -7,8 +7,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 
+import entity.Companies;
 import model.dto.CompaniesDTO;
 import model.provider.CompaniesProvider;
+
+import java.util.ArrayList;
 
 
 @Path("company")
@@ -45,6 +48,33 @@ public class CompaniesServices {
         return provider.getAverage(initial,finalDate);
     }
 
+    @GET
+    @Path("getallcompanies")
+    @Produces("application/json")
+    public ArrayList<CompaniesDTO> getAllCompanies(){
 
+        CompaniesProvider compProvider = new CompaniesProvider();
+        ArrayList<Companies> companies = compProvider.getAllCompanies();
+
+        ArrayList<CompaniesDTO> dto = new ArrayList<CompaniesDTO>();
+
+
+        for (Companies comp: companies) {
+
+            dto.add(compProvider.getCompanyByID(comp.getId()));
+        }
+
+        return dto;
+    }
+
+    @GET
+    @Path("getCompany/{id}")
+    @Produces("application/json")
+    public CompaniesDTO getCompanyById(@PathParam("id") String id){
+
+        CompaniesProvider compProvider = new CompaniesProvider();
+
+        return compProvider.getCompanyByID(Integer.parseInt(id));
+    }
 
 }
