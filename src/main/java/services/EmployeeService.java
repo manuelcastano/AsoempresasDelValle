@@ -39,4 +39,13 @@ public class EmployeeService {
         return employeeProvider.login(user, password);
     }
 
+    @GET
+    @Path("login")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public boolean loginAdmid(String password){
+        EmployeeProvider employeeProvider = new EmployeeProvider();
+        return employeeProvider.loginAdmin(password);
+    }
+
 }

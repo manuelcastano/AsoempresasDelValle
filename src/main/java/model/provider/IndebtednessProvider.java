@@ -98,5 +98,15 @@ public class IndebtednessProvider {
         return in;
     }
 
+    public ArrayList<Indebtedness> indebtednessInTheRange(long initial, long finald){
+        ArrayList<Indebtedness> all = getAllIndebtedness();
+        ArrayList<Indebtedness> out = new ArrayList<Indebtedness>();
+        for(int i=0;i<all.size();i++){
+            if(initial >= all.get(i).getDate() && all.get(i).getDate() <= finald){
+                out.add(all.get(i));
+            }
+        }
+        return out;
+    }
 
 }

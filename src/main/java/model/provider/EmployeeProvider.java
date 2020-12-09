@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class EmployeeProvider {
 
     private PoolConnection pool = PoolConnection.getInstance();
-
+    private static final String ADMINPASS = "admin";
 
     public static void insertEmployee(Employee employee) {
         MySQLConnection connection = new MySQLConnection();
@@ -73,4 +73,14 @@ public class EmployeeProvider {
             return employees;
         }
     }
+
+
+    public boolean loginAdmin(String password){
+        boolean result = false;
+        if(password.equals(ADMINPASS)){
+            result = true;
+        }
+        return result;
+    }
+
 }
