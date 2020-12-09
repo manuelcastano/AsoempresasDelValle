@@ -46,6 +46,11 @@ public class MySQLConnection {
             statement.execute("CREATE TABLE IF NOT EXISTS company(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(50), password VARCHAR(50), sectorID INT, FOREIGN KEY (sectorID) REFERENCES sectores(id))");
             statement.execute("CREATE TABLE IF NOT EXISTS marketingExpenses(id INT PRIMARY  KEY AUTO_INCREMENT, value INT, date DECIMAL(50,0), companyID INT, FOREIGN KEY (companyID) REFERENCES company(id)) ");
             statement.execute("CREATE TABLE IF NOT EXISTS indebtedness(id INT PRIMARY  KEY AUTO_INCREMENT, value INT, date DECIMAL(50,0), companyID INT, FOREIGN KEY (companyID) REFERENCES company(id)) ");
+            statement.execute("CREATE TABLE IF NOT EXISTS periodicexpenses(id INT PRIMARY  KEY AUTO_INCREMENT, value INT, date DECIMAL(50,0), companyID INT, FOREIGN KEY (companyID) REFERENCES company(id)) ");
+            statement.execute("CREATE TABLE IF NOT EXISTS surveys(id INT PRIMARY  KEY AUTO_INCREMENT, satisfactionLevel INT, date DECIMAL(50,0), companyID INT, FOREIGN KEY (companyID) REFERENCES company(id)) ");
+            statement.execute("CREATE TABLE IF NOT EXISTS reports(id INT PRIMARY  KEY AUTO_INCREMENT, startDate DECIMAL(50,0), purchaseDate DECIMAL(50,0), companyID INT, FOREIGN KEY (companyID) REFERENCES company(id)) ");
+            statement.execute("CREATE TABLE IF NOT EXISTS reports(id INT PRIMARY  KEY AUTO_INCREMENT, username varchar(50), password varchar(50)");
+
 
             succes = true;
         } catch (SQLException throwables) {

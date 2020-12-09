@@ -2,11 +2,9 @@ package model.provider;
 
 import db.MySQLConnection;
 import db.PoolConnection;
-import entity.Companies;
-import entity.Indebtedness;
-import entity.MarketingExpenses;
-import entity.Surveys;
+import entity.*;
 import model.dto.CompaniesDTO;
+import model.dto.PeriodicExpensesDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -286,4 +284,66 @@ public class CompaniesProvider {
     }
 
 
+    public ArrayList<PeriodicExpenses> getBestPeriodicExpenses(long initial, long finalDate) {
+
+        PeriodicExpensesProvider provider= new PeriodicExpensesProvider();
+        int dias = (int) ((finalDate-initial)/8640000);
+        long diaSiguiente = initial;
+        ArrayList<PeriodicExpenses> mejorPorDia = new ArrayList<PeriodicExpenses>();
+        for(int j = 0; j < dias; j++){
+            ArrayList<PeriodicExpenses> ref = provider.periodicExpensesInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            PeriodicExpenses bestPeriodicExpenses = ref.get(0);
+            for(int i=0;i<ref.size();i++){
+                if(ref.get(i).getValue()>bestPeriodicExpenses.getValue()){
+                    bestPeriodicExpenses = ref.get(i);
+                }
+            }
+            mejorPorDia.add(bestPeriodicExpenses);
+            diaSiguiente += 8640000;
+        }
+        return mejorPorDia;
+    }
+
+    public ArrayList<PeriodicExpenses> getWorstPeriodicExpenses(long initial, long finalDate) {
+
+        PeriodicExpensesProvider provider = new PeriodicExpensesProvider();
+        int dias = (int) ((finalDate-initial)/8640000);
+        long diaSiguiente = initial;
+        ArrayList<PeriodicExpenses> peorPorDia = new ArrayList<PeriodicExpenses>();
+        for(int j = 0; j < dias; j++){
+            ArrayList<PeriodicExpenses> ref = provider.periodicExpensesInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            PeriodicExpenses bestIndebtedness = ref.get(0);
+            for(int i=0;i<ref.size();i++){
+                if(ref.get(i).getValue()<bestIndebtedness.getValue()){
+                    bestIndebtedness = ref.get(i);
+                }
+            }
+            peorPorDia.add(bestIndebtedness);
+            diaSiguiente += 8640000;
+        }
+        return peorPorDia;
+    }
+
+    public ArrayList<PeriodicExpenses> getAveragePeriodicExpenses(long initial, long finalDate) {
+
+        PeriodicExpensesProvider provider = new PeriodicExpensesProvider();
+        int dias = (int) ((finalDate-initial)/8640000);
+        long diaSiguiente = initial;
+        ArrayList<PeriodicExpenses> promedioPorDia = new ArrayList<PeriodicExpenses>();
+        for(int j = 0; j < dias; j++){
+            ArrayList<PeriodicExpenses> ref = provider.periodicExpensesInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            int valor = 0;
+            for(int i=0;i<ref.size();i++){
+                valor += ref.get(i).getValue();
+            }
+            valor /= ref.size();
+            PeriodicExpenses s = new PeriodicExpenses();
+            s.setValue(valor);
+            s.setDate(diaSiguiente);
+            promedioPorDia.add(s);
+            diaSiguiente += 8640000;
+        }
+        return promedioPorDia;
+
+    }
 }

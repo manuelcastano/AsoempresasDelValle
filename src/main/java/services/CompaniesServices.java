@@ -7,12 +7,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 
-import entity.Companies;
-import entity.Indebtedness;
-import entity.MarketingExpenses;
-import entity.Surveys;
+import entity.*;
 import model.dto.CompaniesDTO;
+import model.dto.PeriodicExpensesDTO;
 import model.provider.CompaniesProvider;
+import model.provider.PeriodicExpensesProvider;
 import model.provider.ReportProvider;
 
 import java.text.ParseException;
@@ -270,6 +269,79 @@ public class CompaniesServices {
             long finalDate = date2.getTime();
 
             aux = provider.getAverageIndebtedness(initial,finalDate);
+
+        }catch (ParseException e){
+
+        }
+        return aux;
+    }
+
+
+    @GET
+    @Path("bestPreriodicExpenses/{initialDate}/{finalDate}")
+    @Produces("application/json")
+    public ArrayList<PeriodicExpenses> bestPreriodicExpenses(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
+        CompaniesProvider provider = new CompaniesProvider();
+        ArrayList<PeriodicExpenses> aux = null;
+        try{
+
+            String fecha1 = iDate;
+            String fecha2 = fDate;
+            SimpleDateFormat f = new SimpleDateFormat("MM-dd-yyyy");
+            Date date1 = (Date)f.parse(fecha1);
+            Date date2 = (Date)f.parse(fecha2);
+            long initial = date1.getTime();
+            long finalDate = date2.getTime();
+
+            aux = provider.getBestPeriodicExpenses(initial,finalDate);
+
+        }catch (ParseException e){
+
+        }
+        return aux;
+    }
+
+    @GET
+    @Path("bestPreriodicExpenses/{initialDate}/{finalDate}")
+    @Produces("application/json")
+    public ArrayList<PeriodicExpenses> worstPeriodicExpenses(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
+        CompaniesProvider provider = new CompaniesProvider();
+        ArrayList<PeriodicExpenses> aux = null;
+        try{
+
+            String fecha1 = iDate;
+            String fecha2 = fDate;
+            SimpleDateFormat f = new SimpleDateFormat("MM-dd-yyyy");
+            Date date1 = (Date)f.parse(fecha1);
+            Date date2 = (Date)f.parse(fecha2);
+            long initial = date1.getTime();
+            long finalDate = date2.getTime();
+
+            aux = provider.getWorstPeriodicExpenses(initial,finalDate);
+
+        }catch (ParseException e){
+
+        }
+        return aux;
+    }
+
+    @GET
+    @Path("AveragePeriodicExpenses/{initialDate}/{finalDate}")
+    @Produces("application/json")
+    public ArrayList<PeriodicExpenses> averageIPeriodicExpenses(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
+        CompaniesProvider provider = new CompaniesProvider();
+        ArrayList<PeriodicExpenses> aux = null;
+        try{
+
+            String fecha1 = iDate;
+            String fecha2 = fDate;
+            SimpleDateFormat f = new SimpleDateFormat("MM-dd-yyyy");
+            Date date1 = (Date)f.parse(fecha1);
+            Date date2 = (Date)f.parse(fecha2);
+            long initial = date1.getTime();
+            long finalDate = date2.getTime();
+
+            aux = provider.getAveragePeriodicExpenses(initial,finalDate);
 
         }catch (ParseException e){
 
