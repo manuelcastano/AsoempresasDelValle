@@ -118,4 +118,18 @@ public class MarketingExpensesProvider {
         return out;
     }
 
+    public ArrayList<MarketingExpenses> marketingInTheRangeByID(long initial, long finald, int id){
+        ArrayList<MarketingExpenses> all = getAllMarketingExpenses();
+        ArrayList<MarketingExpenses> out = new ArrayList<MarketingExpenses>();
+        for(int i=0;i<all.size();i++){
+            if(initial >= all.get(i).getDate() && all.get(i).getDate() <= finald){
+                if(all.get(i).getCompanyID() == id) {
+                    out.add(all.get(i));
+                }
+            }
+        }
+        return out;
+    }
+
+
 }

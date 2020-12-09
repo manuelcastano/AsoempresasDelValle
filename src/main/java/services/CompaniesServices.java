@@ -245,7 +245,8 @@ public class CompaniesServices {
             long initial = date1.getTime();
             long finalDate = date2.getTime();
 
-            aux = provider.getWorstIndebtedness(initial,finalDate);
+            aux = provider.getWorstIndebtedness(
+                    initial,finalDate);
 
         }catch (ParseException e){
 
