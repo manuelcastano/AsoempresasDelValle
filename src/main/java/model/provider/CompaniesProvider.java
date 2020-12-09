@@ -77,47 +77,63 @@ public class CompaniesProvider {
         return compañias;
     }
 
-    public CompaniesDTO getBest(long initial, long finald){
+    public ArrayList<Surveys> getBest(long initial, long finald){
         SurveyProvider provider = new SurveyProvider();
-        ArrayList<Surveys> ref = provider.surveysInTheRange(initial, finald);
-        Surveys bestSurvey = ref.get(0);
-        for(int i=0;i<ref.size();i++){
-            if(ref.get(i).getSatisfactionLevel()>bestSurvey.getSatisfactionLevel()){
-                bestSurvey = ref.get(i);
+        int dias = (int) ((finald-initial)/8640000);
+        long diaSiguiente = initial;
+        ArrayList<Surveys> mejorPorDia = new ArrayList<>();
+        for(int j = 0; j < dias; j++){
+            ArrayList<Surveys> ref = provider.surveysInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            Surveys bestSurvey = ref.get(0);
+            for(int i=0;i<ref.size();i++){
+                if(ref.get(i).getSatisfactionLevel()>bestSurvey.getSatisfactionLevel()){
+                    bestSurvey = ref.get(i);
+                }
             }
+            mejorPorDia.add(bestSurvey);
+            diaSiguiente += 8640000;
         }
-        return getCompanyByID(bestSurvey.getCompanyID());
+        return mejorPorDia;
     }
 
-    public CompaniesDTO getWorst(long initial, long finald){
+    public ArrayList<Surveys> getWorst(long initial, long finald){
         SurveyProvider provider = new SurveyProvider();
-        ArrayList<Surveys> ref = provider.surveysInTheRange(initial, finald);
-        Surveys worstSurvey = ref.get(0);
-        for(int i=0;i<ref.size();i++){
-            if(ref.get(i).getSatisfactionLevel()<worstSurvey.getSatisfactionLevel()){
-                worstSurvey = ref.get(i);
+        int dias = (int) ((finald-initial)/8640000);
+        long diaSiguiente = initial;
+        ArrayList<Surveys> peorPorDia = new ArrayList<>();
+        for(int j = 0; j < dias; j++){
+            ArrayList<Surveys> ref = provider.surveysInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            Surveys bestSurvey = ref.get(0);
+            for(int i=0;i<ref.size();i++){
+                if(ref.get(i).getSatisfactionLevel()<bestSurvey.getSatisfactionLevel()){
+                    bestSurvey = ref.get(i);
+                }
             }
+            peorPorDia.add(bestSurvey);
+            diaSiguiente += 8640000;
         }
-        return getCompanyByID(worstSurvey.getCompanyID());
+        return peorPorDia;
     }
 
-    public CompaniesDTO getAverage(long initial, long finald){
+    public ArrayList<Surveys> getAverage(long initial, long finald){
         SurveyProvider provider = new SurveyProvider();
-        ArrayList<Surveys> ref = provider.surveysInTheRange(initial, finald);
-        int average = 0;
-        int sumatotal = 0;
-        Surveys averageSurveys = ref.get(0);
-        for(int i=0;i<ref.size();i++){
-                sumatotal += ref.get(i).getSatisfactionLevel();
+        int dias = (int) ((finald-initial)/8640000);
+        long diaSiguiente = initial;
+        ArrayList<Surveys> promedioPorDia = new ArrayList<>();
+        for(int j = 0; j < dias; j++){
+            ArrayList<Surveys> ref = provider.surveysInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            int valor = 0;
+            for(int i=0;i<ref.size();i++){
+                valor += ref.get(i).getSatisfactionLevel();
             }
-        average = sumatotal/ref.size();
-        for (int i=0;i<ref.size();i++){
-            if(Math.abs(ref.get(i).getSatisfactionLevel()-average) < Math.abs(averageSurveys.getSatisfactionLevel()-average)){
-                averageSurveys = ref.get(i);
-            }
+            valor /= ref.size();
+            Surveys s = new Surveys();
+            s.setSatisfactionLevel(valor);
+            s.setDate(diaSiguiente);
+            promedioPorDia.add(s);
+            diaSiguiente += 8640000;
         }
-
-        return getCompanyByID(averageSurveys.getCompanyID());
+        return promedioPorDia;
 
     }
 

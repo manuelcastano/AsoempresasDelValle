@@ -8,11 +8,15 @@ import javax.ws.rs.Produces;
 
 
 import entity.Companies;
+import entity.Surveys;
 import model.dto.CompaniesDTO;
 import model.provider.CompaniesProvider;
 import model.provider.ReportProvider;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 @Path("company")
@@ -22,31 +26,72 @@ public class CompaniesServices {
     @GET
     @Path("best/{initialDate}/{finalDate}")
     @Produces("application/json")
-    public CompaniesDTO bestCompany(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
-        long initial = Long.parseLong(iDate);
-        long finalDate = Long.parseLong(fDate);
+    public ArrayList<Surveys> bestCompany(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
         CompaniesProvider provider = new CompaniesProvider();
-        return provider.getBest(initial,finalDate);
+        ArrayList<Surveys> aux = null;
+        try{
+            String fech1 = iDate;
+            String fech2 = fDate;
+            SimpleDateFormat f = new SimpleDateFormat("MM-dd-yyyy");
+            Date date1 = (Date)f.parse(fech1);
+            Date date2 = (Date)f.parse(fech2);
+            long initial = date1.getTime();
+            long finalDate = date2.getTime();
+            aux = provider.getBest(initial,finalDate);
+
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        return aux;
     }
 
     @GET
-    @Path("best/{initialDate}/{finalDate}")
+    @Path("worst/{initialDate}/{finalDate}")
     @Produces("application/json")
-    public CompaniesDTO worstCompany(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
-        long initial = Long.parseLong(iDate);
-        long finalDate = Long.parseLong(fDate);
+    public ArrayList<Surveys> worstCompany(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
         CompaniesProvider provider = new CompaniesProvider();
-        return provider.getWorst(initial,finalDate);
+        ArrayList<Surveys> aux = null;
+        try{
+            String fecha1 = iDate;
+            String fecha2 = fDate;
+            SimpleDateFormat f = new SimpleDateFormat("MM-dd-yyyy");
+            Date date1 = (Date)f.parse(fecha1);
+            Date date2 = (Date)f.parse(fecha2);
+            long initial = date1.getTime();
+            long finalDate = date2.getTime();
+
+            aux = provider.getWorst(initial,finalDate);
+
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        return aux;
     }
 
     @GET
-    @Path("best/{initialDate}/{finalDate}")
+    @Path("average/{initialDate}/{finalDate}")
     @Produces("application/json")
-    public CompaniesDTO averageCompany(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
-        long initial = Long.parseLong(iDate);
-        long finalDate = Long.parseLong(fDate);
+    public ArrayList<Surveys> averageCompany(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
         CompaniesProvider provider = new CompaniesProvider();
-        return provider.getAverage(initial,finalDate);
+        ArrayList<Surveys> aux = null;
+        try{
+
+            String fecha1 = iDate;
+            String fecha2 = fDate;
+            SimpleDateFormat f = new SimpleDateFormat("MM-dd-yyyy");
+            Date date1 = (Date)f.parse(fecha1);
+            Date date2 = (Date)f.parse(fecha2);
+            long initial = date1.getTime();
+            long finalDate = date2.getTime();
+
+            aux = provider.getAverage(initial,finalDate);
+
+        }catch (ParseException e){
+
+        }
+
+
+        return aux;
     }
 
     @GET
