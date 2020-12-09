@@ -23,8 +23,6 @@ public class IndebtednessServices {
         }else{
             return new Response("No hay ninguna compañia");
         }
-
-
     }
 
     @DELETE
