@@ -109,4 +109,18 @@ public class IndebtednessProvider {
         return out;
     }
 
+
+    public ArrayList<Indebtedness> indebtednessInTheRangeByID(long initial, long finald, int id){
+        ArrayList<Indebtedness> all = getAllIndebtedness();
+        ArrayList<Indebtedness> out = new ArrayList<Indebtedness>();
+        for(int i=0;i<all.size();i++){
+            if(initial >= all.get(i).getDate() && all.get(i).getDate() <= finald){
+                if(all.get(i).getCompanyID() == id) {
+                    out.add(all.get(i));
+                }
+            }
+        }
+        return out;
+    }
+
 }

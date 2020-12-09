@@ -48,5 +48,19 @@ public class SurveyProvider {
         return out;
     }
 
+    public ArrayList<Surveys> surveysInTheRangeByID(long initial, long finald, int id){
+        ArrayList<Surveys> all = getAllSurveys();
+        ArrayList<Surveys> out = new ArrayList<Surveys>();
+        for(int i=0;i<all.size();i++){
+            if(initial >= all.get(i).getDate() && all.get(i).getDate() <= finald){
+                if(all.get(i).getCompanyID() == id) {
+                    out.add(all.get(i));
+                }
+            }
+        }
+        return out;
+    }
+
+
 
 }

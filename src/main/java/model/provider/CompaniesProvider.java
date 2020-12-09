@@ -283,6 +283,33 @@ public class CompaniesProvider {
 
     }
 
+    public ArrayList<Surveys> getOnlyOneCompanyBySurveys(int idEmpresa,long initial, long finald){
+        ArrayList<Surveys> out = new ArrayList<>();
+        SurveyProvider survs = new SurveyProvider();
+        if(existCompany(idEmpresa)) {
+                out = survs.surveysInTheRangeByID(initial,finald,idEmpresa);
+        }
+        return out;
+    }
+
+    public ArrayList<MarketingExpenses> getOnlyOneCompanyByMarketing(int idEmpresa,long initial, long finald){
+        ArrayList<MarketingExpenses> out = new ArrayList<>();
+        MarketingExpensesProvider marke = new MarketingExpensesProvider();
+        if(existCompany(idEmpresa)) {
+            out = marke.marketingInTheRangeByID(initial,finald,idEmpresa);
+        }
+        return out;
+    }
+
+    public ArrayList<Indebtedness> getOnlyOneCompanyByIndebtedness(int idEmpresa,long initial, long finald){
+        ArrayList<Indebtedness> out = new ArrayList<>();
+        IndebtednessProvider indeb = new IndebtednessProvider();
+        if(existCompany(idEmpresa)){
+            out = indeb.indebtednessInTheRangeByID(initial,finald,idEmpresa);
+        }
+        return out;
+    }
+
 
     public ArrayList<PeriodicExpenses> getBestPeriodicExpenses(long initial, long finalDate) {
 
