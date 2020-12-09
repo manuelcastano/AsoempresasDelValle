@@ -6,6 +6,7 @@ import db.PoolConnection;
 import entity.Companies;
 import entity.MarketingExpenses;
 import entity.Sector;
+import entity.Surveys;
 import model.dto.MarketingExpensesDTO;
 import model.dto.SectorsDTO;
 
@@ -102,12 +103,19 @@ public class MarketingExpensesProvider {
         }catch (ParseException e){
 
         }
-
-
-
-
         return mark;
     }
 
+
+    public ArrayList<MarketingExpenses> marketingInTheRange(long initial, long finald){
+        ArrayList<MarketingExpenses> all = getAllMarketingExpenses();
+        ArrayList<MarketingExpenses> out = new ArrayList<MarketingExpenses>();
+        for(int i=0;i<all.size();i++){
+            if(initial >= all.get(i).getDate() && all.get(i).getDate() <= finald){
+                out.add(all.get(i));
+            }
+        }
+        return out;
+    }
 
 }

@@ -8,6 +8,7 @@ import javax.ws.rs.Produces;
 
 
 import entity.Companies;
+import entity.MarketingExpenses;
 import entity.Surveys;
 import model.dto.CompaniesDTO;
 import model.provider.CompaniesProvider;
@@ -126,6 +127,80 @@ public class CompaniesServices {
         comp.setReports(reportProvider.getAllReportsByCompany(Integer.parseInt(id)));
 
         return comp;
+    }
+
+    @GET
+    @Path("bestMarketing/{initialDate}/{finalDate}")
+    @Produces("application/json")
+    public ArrayList<MarketingExpenses> bestMarketing(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
+        CompaniesProvider provider = new CompaniesProvider();
+        ArrayList<MarketingExpenses> aux = null;
+        try{
+
+            String fecha1 = iDate;
+            String fecha2 = fDate;
+            SimpleDateFormat f = new SimpleDateFormat("MM-dd-yyyy");
+            Date date1 = (Date)f.parse(fecha1);
+            Date date2 = (Date)f.parse(fecha2);
+            long initial = date1.getTime();
+            long finalDate = date2.getTime();
+
+            aux = provider.getBestMarketingExpenses(initial,finalDate);
+
+        }catch (ParseException e){
+
+        }
+        return aux;
+    }
+
+
+    @GET
+    @Path("worstMarketing/{initialDate}/{finalDate}")
+    @Produces("application/json")
+    public ArrayList<MarketingExpenses> worstMarketing(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
+        CompaniesProvider provider = new CompaniesProvider();
+        ArrayList<MarketingExpenses> aux = null;
+        try{
+
+            String fecha1 = iDate;
+            String fecha2 = fDate;
+            SimpleDateFormat f = new SimpleDateFormat("MM-dd-yyyy");
+            Date date1 = (Date)f.parse(fecha1);
+            Date date2 = (Date)f.parse(fecha2);
+            long initial = date1.getTime();
+            long finalDate = date2.getTime();
+
+            aux = provider.getWorstMarketingExpenses(initial,finalDate);
+
+        }catch (ParseException e){
+
+        }
+        return aux;
+    }
+
+
+    @GET
+    @Path("averageMarketing/{initialDate}/{finalDate}")
+    @Produces("application/json")
+    public ArrayList<MarketingExpenses> AverageMarketing(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
+        CompaniesProvider provider = new CompaniesProvider();
+        ArrayList<MarketingExpenses> aux = null;
+        try{
+
+            String fecha1 = iDate;
+            String fecha2 = fDate;
+            SimpleDateFormat f = new SimpleDateFormat("MM-dd-yyyy");
+            Date date1 = (Date)f.parse(fecha1);
+            Date date2 = (Date)f.parse(fecha2);
+            long initial = date1.getTime();
+            long finalDate = date2.getTime();
+
+            aux = provider.getAverageMarketingExpenses(initial,finalDate);
+
+        }catch (ParseException e){
+
+        }
+        return aux;
     }
 
 }
