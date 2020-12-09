@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import entity.Companies;
 import model.dto.CompaniesDTO;
 import model.provider.CompaniesProvider;
+import model.provider.ReportProvider;
 
 import java.util.ArrayList;
 
@@ -73,8 +74,13 @@ public class CompaniesServices {
     public CompaniesDTO getCompanyById(@PathParam("id") String id){
 
         CompaniesProvider compProvider = new CompaniesProvider();
+        ReportProvider reportProvider = new ReportProvider();
 
-        return compProvider.getCompanyByID(Integer.parseInt(id));
+        CompaniesDTO comp = compProvider.getCompanyByID(Integer.parseInt(id));
+
+        comp.setReports(reportProvider.getAllReportsByCompany(Integer.parseInt(id)));
+
+        return comp;
     }
 
 }
