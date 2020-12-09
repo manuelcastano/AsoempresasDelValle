@@ -3,6 +3,7 @@ package model.provider;
 import db.MySQLConnection;
 import db.PoolConnection;
 import entity.Companies;
+import entity.Indebtedness;
 import entity.MarketingExpenses;
 import entity.Surveys;
 import model.dto.CompaniesDTO;
@@ -198,7 +199,67 @@ public class CompaniesProvider {
         return promedioPorDia;
     }
 
-    
+    public ArrayList<Indebtedness> getBestIndebtedness(long initial, long finald){
+
+        IndebtednessProvider provider = new IndebtednessProvider();
+        int dias = (int) ((finald-initial)/8640000);
+        long diaSiguiente = initial;
+        ArrayList<Indebtedness> mejorPorDia = new ArrayList<Indebtedness>();
+        for(int j = 0; j < dias; j++){
+            ArrayList<Indebtedness> ref = provider.indebtednessInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            Indebtedness bestIndebtedness = ref.get(0);
+            for(int i=0;i<ref.size();i++){
+                if(ref.get(i).getValue()>bestIndebtedness.getValue()){
+                    bestIndebtedness = ref.get(i);
+                }
+            }
+            mejorPorDia.add(bestIndebtedness);
+            diaSiguiente += 8640000;
+        }
+        return mejorPorDia;
+
+    }
+
+    public ArrayList<Indebtedness> getWorstIndebtedness(long initial, long finald){
+        IndebtednessProvider provider = new IndebtednessProvider();
+        int dias = (int) ((finald-initial)/8640000);
+        long diaSiguiente = initial;
+        ArrayList<Indebtedness> peorPorDia = new ArrayList<Indebtedness>();
+        for(int j = 0; j < dias; j++){
+            ArrayList<Indebtedness> ref = provider.indebtednessInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            Indebtedness bestIndebtedness = ref.get(0);
+            for(int i=0;i<ref.size();i++){
+                if(ref.get(i).getValue()<bestIndebtedness.getValue()){
+                    bestIndebtedness = ref.get(i);
+                }
+            }
+            peorPorDia.add(bestIndebtedness);
+            diaSiguiente += 8640000;
+        }
+        return peorPorDia;
+    }
+
+    public ArrayList<Indebtedness> getAverageIndebtedness(long initial, long finald){
+        IndebtednessProvider provider = new IndebtednessProvider();
+        int dias = (int) ((finald-initial)/8640000);
+        long diaSiguiente = initial;
+        ArrayList<Indebtedness> promedioPorDia = new ArrayList<Indebtedness>();
+        for(int j = 0; j < dias; j++){
+            ArrayList<Indebtedness> ref = provider.indebtednessInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            int valor = 0;
+            for(int i=0;i<ref.size();i++){
+                valor += ref.get(i).getValue();
+            }
+            valor /= ref.size();
+            Indebtedness s = new Indebtedness();
+            s.setValue(valor);
+            s.setDate(diaSiguiente);
+            promedioPorDia.add(s);
+            diaSiguiente += 8640000;
+        }
+        return promedioPorDia;
+    }
+
 
     public Companies mapFromDTO(CompaniesDTO compani){
         Companies company = new Companies();
