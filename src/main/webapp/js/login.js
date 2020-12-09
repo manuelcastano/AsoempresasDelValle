@@ -2,9 +2,15 @@ const user = document.getElementById('user');
 const password = document.getElementById('passW');
 const logBtn = document.getElementById('logBtn');
 
-login = ()=>{
-
+log = () => {
     
+    let paso = true;
+    if(paso)
+        window.location.href = 'viewCompanies.html';
+        
+    else
+        alert();
+
 }
 
-logBtn.addEventListener('click', login);
+logBtn.addEventListener('click', log);
