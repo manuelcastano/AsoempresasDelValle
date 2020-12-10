@@ -33,18 +33,20 @@ public class EmployeeProvider {
         boolean result = false;
         MySQLConnection connection = pool.getConexion();
         try {
-            String sql = "SELECT user FROM employees WHERE employees.user= '$user' AND employees.password= '$password'";
-            sql.replace("$user", ""+user);
-            sql.replace("$password", ""+password);
-            ResultSet resultSet = connection.Query(sql);
+            String sql = "SELECT * FROM employees WHERE employees.user='"+user+"' AND employees.password='"+password+"'";
+            //sql.replace("$user", ""+user);
+            //sql.replace("$password", ""+password);
 
+            ResultSet resultSet = connection.Query(sql);
             while (resultSet.next()) {
+
                 result = true;
             }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        connection.disconnect();
         return result;
     }
 

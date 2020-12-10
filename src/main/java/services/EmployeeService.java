@@ -31,13 +31,15 @@ public class EmployeeService {
     }
 
 
-    @GET
+    @POST
     @Path("login")
     @Consumes("application/json")
     @Produces("application/json")
     public Response login(EmployeesDTO employeesDTO){
         Response response = new Response("Operacion fallo");
         EmployeeProvider employeeProvider = new EmployeeProvider();
+
+        System.out.println(employeeProvider.login(employeesDTO.getUser(), employeesDTO.getPassword()));
         if(employeeProvider.login(employeesDTO.getUser(), employeesDTO.getPassword())){
             response.setMessage("Operacion exitosa");
         }
