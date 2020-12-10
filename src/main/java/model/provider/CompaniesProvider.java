@@ -20,14 +20,14 @@ public class CompaniesProvider {
 
         if(sec.existSector(company.getSectorID())){
 
-            String sql = "INSERT INTO company(name,password,sectorID) VALUES ('$name','$password','$sectorID')";
+            String sql = "INSERT INTO company(name,sectorID) VALUES ('$name','$sectorID')";
             sql = sql.replace("$name", company.getName());
-            sql = sql.replace("$password", company.getPassword());
             sql = sql.replace("$sectorID", "" + company.getSectorID());
+            System.out.println(sql);
             pool.getConexion().executeSQL(sql);
             t = true;
         }
-
+        System.out.println(t);
         return t;
 
 
@@ -36,15 +36,14 @@ public class CompaniesProvider {
 
     public CompaniesDTO getCompanyByID(int id){
         MySQLConnection connection = pool.getConexion();
-        String sql = "SELECT id, name, password, sectorID FROM company WHERE id="+id;
+        String sql = "SELECT id, name, sectorID FROM company WHERE id="+id;
         ResultSet resultSet = connection.Query(sql);
         CompaniesDTO companiesDTO = new CompaniesDTO();
             try {
                 while(resultSet.next()){
                     companiesDTO.setId(resultSet.getInt(1));
                     companiesDTO.setName(resultSet.getString(2));
-                    companiesDTO.setPassword(resultSet.getString(3));
-                    companiesDTO.setSectorID(resultSet.getInt(4));
+                    companiesDTO.setSectorID(resultSet.getInt(3));
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -63,10 +62,9 @@ public class CompaniesProvider {
 
             while(resultset.next()){
                 compañias.add(new Companies(
-                                resultset.getInt(1),
-                                resultset.getString(2),
-                                resultset.getString(3),
-                                resultset.getInt(4)
+                                resultset.getInt(resultset.findColumn("id")),
+                                resultset.getString(resultset.findColumn("name")),
+                                resultset.getInt(resultset.findColumn("id"))
                         )
                 );
             }
@@ -263,11 +261,10 @@ public class CompaniesProvider {
     }
 
 
-    public Companies mapFromDTO(CompaniesDTO compani){
+    public Companies mapFromDTO(CompaniesDTO c){
         Companies company = new Companies();
-        company.setName(compani.getName());
-        company.setPassword(compani.getPassword());
-        company.setSectorID(compani.getSector().getId());
+        company.setName(c.getName());
+        company.setSectorID(c.getSectorID());
         return company;
     }
 
@@ -376,5 +373,25 @@ public class CompaniesProvider {
         }
         return promedioPorDia;
 
+    }
+    public boolean createCompany(Companies c){
+        SectorProvider provider = new SectorProvider();
+        boolean could = false;
+        if(provider.existSector(c.getSectorID())){
+            could = true;
+            String sql = "INSERT into companies(id,name,sector) values ($id, $name, $sector)";
+            sql.replace("$id", c.getId()+"");
+            sql.replace("$name", c.getName());
+            sql.replace("$sector",c.getSectorID()+"");
+            pool.getConexion().executeSQL(sql);
+        }
+        return could;
+    }
+    public CompaniesDTO mapToDTO(Companies c){
+        CompaniesDTO dto = new CompaniesDTO();
+        dto.setId(c.getId());
+        dto.setName(c.getName());
+        dto.setSectorID(c.getSectorID());
+        return dto;
     }
 }

@@ -7,6 +7,7 @@ import entity.Sector;
 import model.dto.CompaniesDTO;
 import model.dto.SectorsDTO;
 
+import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,8 +16,11 @@ public class SectorProvider {
 
     public PoolConnection pool;
 
-    public void InsertSector(Sector sector){
+    public SectorProvider(){
         pool = PoolConnection.getInstance();
+    }
+
+    public void InsertSector(Sector sector){
         String sql = "INSERT INTO sectores(name) VALUES ('$name')";
         sql = sql.replace("$name", sector.getName());
         pool.getConexion().executeSQL(sql);
@@ -25,12 +29,15 @@ public class SectorProvider {
 
     public boolean existSector(int idSector){
         boolean t = false;
-        ArrayList<Sector> sectores = getAllSectores();
-
-        for(int i = 0; i < sectores.size() && !t ;i++){
-            if(sectores.get(i).getId() == idSector){
+        MySQLConnection connection = pool.getConexion();
+        try {
+            String sql = "SELECT id FROM sectores WHERE sectores.id=" + idSector;
+            ResultSet resultSet = connection.Query(sql);
+            while (resultSet.next()){
                 t = true;
             }
+        }catch (SQLException e){
+            e.printStackTrace();
         }
         return t;
     }

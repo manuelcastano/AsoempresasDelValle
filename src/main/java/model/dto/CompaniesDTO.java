@@ -8,7 +8,6 @@ public class CompaniesDTO {
     private String name;
     private String password;
     private int sectorID;
-    private ArrayList<EmployeesDTO> empleados;
     private SectorsDTO sector;
     private ArrayList<SurveysDTO> surveys;
     private ArrayList<PeriodicExpensesDTO> periodics;
@@ -19,20 +18,24 @@ public class CompaniesDTO {
     public CompaniesDTO() {
     }
 
-    public CompaniesDTO(int id, String name, String password, int sectorID, ArrayList<EmployeesDTO> empleados, SectorsDTO sector, ArrayList<SurveysDTO> surveys,
+    public CompaniesDTO(int id, String name, String password, int sectorID, SectorsDTO sector, ArrayList<SurveysDTO> surveys,
                         ArrayList<PeriodicExpensesDTO> periodics, ArrayList<MarketingExpensesDTO> marketings,
                         ArrayList<IndebtednessDTO> indebtedness, ArrayList<ReportsDTO> reports) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.sectorID = sectorID;
-        this.empleados = empleados;
         this.sector = sector;
         this.surveys = surveys;
         this.periodics = periodics;
         this.marketings = marketings;
         this.indebtedness = indebtedness;
         this.reports = reports;
+    }
+    public CompaniesDTO(int id, String name, int sectorID) {
+        this.id = id;
+        this.name = name;
+        this.sectorID = sectorID;
     }
 
     public int getId() {
@@ -51,14 +54,6 @@ public class CompaniesDTO {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public int getSectorID() {
         return sectorID;
     }
@@ -67,13 +62,6 @@ public class CompaniesDTO {
         this.sectorID = sectorID;
     }
 
-    public ArrayList<EmployeesDTO> getEmpleados() {
-        return empleados;
-    }
-
-    public void setEmpleados(ArrayList<EmployeesDTO> empleados) {
-        this.empleados = empleados;
-    }
 
     public SectorsDTO getSector() {
         return sector;

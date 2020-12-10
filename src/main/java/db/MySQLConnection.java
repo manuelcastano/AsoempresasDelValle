@@ -43,7 +43,7 @@ public class MySQLConnection {
             Statement statement = connection.createStatement();
 
             statement.execute("CREATE TABLE IF NOT EXISTS sectores(id INT PRIMARY KEY AUTO_INCREMENT,name VARCHAR(50))");
-            statement.execute("CREATE TABLE IF NOT EXISTS company(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(50), password VARCHAR(50), sectorID INT, FOREIGN KEY (sectorID) REFERENCES sectores(id))");
+            statement.execute("CREATE TABLE IF NOT EXISTS company(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(50), sectorID INT, FOREIGN KEY (sectorID) REFERENCES sectores(id))");
             statement.execute("CREATE TABLE IF NOT EXISTS marketingExpenses(id INT PRIMARY  KEY AUTO_INCREMENT, value INT, date DECIMAL(50,0), companyID INT, FOREIGN KEY (companyID) REFERENCES company(id)) ");
             statement.execute("CREATE TABLE IF NOT EXISTS indebtedness(id INT PRIMARY  KEY AUTO_INCREMENT, value INT, date DECIMAL(50,0), companyID INT, FOREIGN KEY (companyID) REFERENCES company(id)) ");
             statement.execute("CREATE TABLE IF NOT EXISTS periodicexpenses(id INT PRIMARY  KEY AUTO_INCREMENT, value INT, date DECIMAL(50,0), companyID INT, FOREIGN KEY (companyID) REFERENCES company(id)) ");

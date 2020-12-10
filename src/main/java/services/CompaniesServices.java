@@ -1,15 +1,13 @@
 package services;
 
 import javax.ejb.Stateless;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 
 
 import entity.*;
 import model.dto.CompaniesDTO;
 import model.dto.PeriodicExpensesDTO;
+import model.dto.Response;
 import model.provider.CompaniesProvider;
 import model.provider.PeriodicExpensesProvider;
 import model.provider.ReportProvider;
@@ -338,6 +336,18 @@ public class CompaniesServices {
         return aux;
     }
 
-
+    @POST
+    @Path("create")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Response createCompany(CompaniesDTO dto){
+        CompaniesProvider provider = new CompaniesProvider();
+        boolean could = provider.InsertCompanies(provider.mapFromDTO(dto));
+        if(could){
+            return new Response("Operacion exitosa");
+        }else{
+            return new Response("Operacion fallida");
+        }
+    }
 
 }
