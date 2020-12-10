@@ -5,16 +5,14 @@ public class EmployeesDTO {
     private int id;
     private String user;
     private String password;
-    private CompaniesDTO company;
 
     public EmployeesDTO() {
     }
 
-    public EmployeesDTO(int id, String user, String password, CompaniesDTO company) {
+    public EmployeesDTO(int id, String user, String password) {
         this.id = id;
         this.user = user;
         this.password = password;
-        this.company = company;
     }
 
     public int getId() {
@@ -41,11 +39,4 @@ public class EmployeesDTO {
         this.password = password;
     }
 
-    public CompaniesDTO getCompany() {
-        return company;
-    }
-
-    public void setCompany(CompaniesDTO company) {
-        this.company = company;
-    }
 }

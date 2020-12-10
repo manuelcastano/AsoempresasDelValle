@@ -23,10 +23,11 @@ public class EmployeeService {
     }
 
     @DELETE
-    @Path("delete")
-    public Response deleteEmoloyee(String user){
+    @Path("delete/{id}")
+    @Produces("application/json")
+    public Response deleteEmoloyee(@PathParam("id")String id){
         EmployeeProvider employeeProvider = new EmployeeProvider();
-        employeeProvider.removeEmployee(user);
+        employeeProvider.removeEmployee(Integer.parseInt(id));
         return new Response("Operacion exitosa");
     }
 
@@ -39,20 +40,25 @@ public class EmployeeService {
         Response response = new Response("Operacion fallo");
         EmployeeProvider employeeProvider = new EmployeeProvider();
 
-        System.out.println(employeeProvider.login(employeesDTO.getUser(), employeesDTO.getPassword()));
+
         if(employeeProvider.login(employeesDTO.getUser(), employeesDTO.getPassword())){
             response.setMessage("Operacion exitosa");
         }
         return response;
     }
 
-    /*
-    @GET
-    @Path("login")
-    //lo cambiamos después, debe retornar un Response con json
-    public boolean loginAdmid(String password){
+
+    @POST
+    @Path("loginA")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Response loginAdmid(EmployeesDTO dto){
         EmployeeProvider employeeProvider = new EmployeeProvider();
-        return employeeProvider.loginAdmin(password);
+        if(employeeProvider.loginAdmin(dto.getPassword())){
+            return new Response("Operacion exitosa");
+        }else{
+            return new Response("Operacion fallida");
+        }
     }
-    **/
+
 }

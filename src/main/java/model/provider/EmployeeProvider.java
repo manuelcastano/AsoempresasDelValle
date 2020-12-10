@@ -50,8 +50,8 @@ public class EmployeeProvider {
         return result;
     }
 
-    public void removeEmployee(String user) {
-        String sql = "DELETE FROM employees WHERE employees.user=" + user;
+    public void removeEmployee(int id) {
+        String sql = "DELETE FROM employees WHERE employees.id=" + id;
         pool.getConexion().executeSQL(sql);
     }
 

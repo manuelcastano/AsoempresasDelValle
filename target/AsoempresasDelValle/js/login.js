@@ -2,7 +2,7 @@ const user = document.getElementById('user');
 const passW = document.getElementById('passW');
 const logBtn = document.getElementById('logBtn');
 
-log = () => {
+const log = () => {
 
     let userObj = {
         id:0,
