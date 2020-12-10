@@ -3,7 +3,6 @@ const btValidar = document.getElementById('btValidar');
 
 const loginAdm = ()=>{
 	 let admObj = {
-	     id:0,
 	     password: this.passW.value
 	 }
 	    console.log(JSON.stringify(admObj));
@@ -13,7 +12,7 @@ const loginAdm = ()=>{
 	        console.log(xhr.responseText);
 	    });
 		  
-	    xhr.open('POST', 'http://localhost:8080/AsoempresasDelValle/api/employee/loginAdm')
+	    xhr.open('POST', 'http://localhost:8080/AsoempresasDelValle/api/employee/login')
 	    xhr.setRequestHeader('Content-Type', 'application/json');
 	    xhr.send(JSON.stringify(admObj));
         window.location.href = 'viewEmployees.html';
