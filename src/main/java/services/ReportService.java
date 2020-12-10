@@ -24,12 +24,12 @@ public class ReportService {
     }
 
     @GET
-    @Path("reportsbycompany")
-    @Consumes("application/json")
+    @Path("reportsbycompany/{id}")
     @Produces("application/json")
-    public ArrayList<ReportsDTO> getAllReportsByCompany(int id){
+    public ArrayList<ReportsDTO> getAllReportsByCompany(@PathParam("id") String id){
+        int a = Integer.parseInt(id);
         ReportProvider provider = new ReportProvider();
-        ArrayList<ReportsDTO> reportsDTOS = provider.getAllReportsByCompany(id);
+        ArrayList<ReportsDTO> reportsDTOS = provider.getAllReportsByCompany(a);
         return reportsDTOS;
     }
 }

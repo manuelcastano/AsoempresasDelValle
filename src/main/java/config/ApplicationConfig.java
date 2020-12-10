@@ -19,7 +19,6 @@ public class ApplicationConfig  extends Application{
         resources.add(IndebtednessServices.class);
         resources.add(MarketingExpensesServices.class);
         resources.add(ReportService.class);
-
         return resources;
     }
 }

@@ -30,6 +30,7 @@ public class EmployeeService {
         return new Response("Operacion exitosa");
     }
 
+    /*
     @POST
     @Path("login")
     @Consumes("application/json")
@@ -38,14 +39,14 @@ public class EmployeeService {
         EmployeeProvider employeeProvider = new EmployeeProvider();
         return employeeProvider.login(user, password);
     }
-
+    **/
+    /*
     @GET
     @Path("login")
-    @Consumes("application/json")
-    @Produces("application/json")
+    //lo cambiamos después, debe retornar un Response con json
     public boolean loginAdmid(String password){
         EmployeeProvider employeeProvider = new EmployeeProvider();
         return employeeProvider.loginAdmin(password);
     }
-
+    **/
 }

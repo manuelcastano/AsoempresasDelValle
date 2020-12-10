@@ -9,5 +9,8 @@
         <module name="AsoempresasDelValle" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AsoempresasDelValle" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

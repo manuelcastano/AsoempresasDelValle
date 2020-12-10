@@ -1,6 +1,5 @@
 package model.provider;
 
-<<<<<<< HEAD
 import db.MySQLConnection;
 import db.PoolConnection;
 import entity.Employee;
@@ -34,7 +33,7 @@ public class EmployeeProvider {
         boolean result = false;
         MySQLConnection connection = pool.getConexion();
         try {
-            String sql = "SELECT user FROM employees WHERE employees.user = " + user+ "AND employees.password ="+password;
+            String sql = "SELECT user FROM employees WHERE employees.user = " + user + "AND employees.password =" + password;
             ResultSet resultSet = connection.Query(sql);
 
             while (resultSet.next()) {
@@ -48,19 +47,19 @@ public class EmployeeProvider {
     }
 
     public void removeEmployee(String user) {
-        String sql = "DELETE FROM employees WHERE employees.user="+user;
+        String sql = "DELETE FROM employees WHERE employees.user=" + user;
         pool.getConexion().executeSQL(sql);
     }
 
-    public ArrayList<Employee> getAllEmployees(){
+    public ArrayList<Employee> getAllEmployees() {
         ArrayList<Employee> employees = new ArrayList<Employee>();
         MySQLConnection mySQLConnection = pool.getConexion();
         String sql = "SELECT * FROM employees ";
         ResultSet resultSet = mySQLConnection.Query(sql);
 
-        while(true){
+        while (true) {
             try {
-                while (resultSet.next()){
+                while (resultSet.next()) {
                     employees.add(new Employee(
                             resultSet.getInt(1),
                             resultSet.getString(2),
@@ -76,27 +75,11 @@ public class EmployeeProvider {
     }
 
 
-    public boolean loginAdmin(String password){
+    public boolean loginAdmin(String password) {
         boolean result = false;
-        if(password.equals(ADMINPASS)){
+        if (password.equals(ADMINPASS)) {
             result = true;
         }
         return result;
-=======
-import model.dto.EmployeeDTO;
-import db.MySQLConnection;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-
-public class EmployeeProvider {
-
-    public EmployeeDTO getEmployeeById(int id) {
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        MySQLConnection connection = new MySQLConnection();
-        return null;
->>>>>>> services_basic_structure
     }
-
 }

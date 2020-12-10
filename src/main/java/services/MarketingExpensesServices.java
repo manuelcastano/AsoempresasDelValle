@@ -1,13 +1,11 @@
 package services;
 
-import config.Response;
-import entity.MarketingExpenses;
+import model.dto.Response;
 import model.dto.MarketingExpensesDTO;
 import model.provider.CompaniesProvider;
 import model.provider.MarketingExpensesProvider;
 
 import javax.ejb.Stateless;
-import javax.enterprise.inject.Produces;
 import javax.ws.rs.*;
 
 @Stateless

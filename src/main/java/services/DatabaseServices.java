@@ -1,7 +1,6 @@
 package services;
 
-import config.Response;
-import db.MySQLConnection;
+import model.dto.Response;
 import db.PoolConnection;
 
 import javax.ejb.Stateless;

@@ -145,7 +145,10 @@ public class CompaniesProvider {
         ArrayList<MarketingExpenses> mejorPorDia = new ArrayList<MarketingExpenses>();
         for(int j = 0; j < dias; j++){
             ArrayList<MarketingExpenses> ref = provider.marketingInTheRange(diaSiguiente, diaSiguiente + 8640000);
-            MarketingExpenses bestMarketing = ref.get(0);
+            MarketingExpenses bestMarketing = null;
+            if(!ref.isEmpty()){
+                bestMarketing = ref.get(0);
+            }
             for(int i=0;i<ref.size();i++){
                 if(ref.get(i).getValue()>bestMarketing.getValue()){
                     bestMarketing = ref.get(i);
@@ -154,6 +157,7 @@ public class CompaniesProvider {
             mejorPorDia.add(bestMarketing);
             diaSiguiente += 8640000;
         }
+        System.out.println(mejorPorDia.size());
         return mejorPorDia;
     }
 

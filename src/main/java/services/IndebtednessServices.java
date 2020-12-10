@@ -1,11 +1,8 @@
 package services;
 
-import config.Response;
+import model.dto.Response;
 import model.dto.IndebtednessDTO;
-import model.dto.MarketingExpensesDTO;
-import model.provider.CompaniesProvider;
 import model.provider.IndebtednessProvider;
-import model.provider.MarketingExpensesProvider;
 
 import javax.ejb.Stateless;
 import javax.ws.rs.*;

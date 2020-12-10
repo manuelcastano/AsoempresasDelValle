@@ -24,6 +24,7 @@ import java.util.Date;
 @Stateless
 public class CompaniesServices {
 
+    //Modificar para hacerlo con respecto al sector
     @GET
     @Path("best/{initialDate}/{finalDate}")
     @Produces("application/json")
@@ -46,6 +47,7 @@ public class CompaniesServices {
         return aux;
     }
 
+    //Modificar para hacerlo con respecto al sector
     @GET
     @Path("worst/{initialDate}/{finalDate}")
     @Produces("application/json")
@@ -69,6 +71,7 @@ public class CompaniesServices {
         return aux;
     }
 
+    //Modificar para hacerlo con respecto al sector
     @GET
     @Path("average/{initialDate}/{finalDate}")
     @Produces("application/json")
@@ -95,10 +98,9 @@ public class CompaniesServices {
     }
 
     @GET
-    @Path("getallcompanies")
     @Produces("application/json")
+    @Path("getallcompanies")
     public ArrayList<CompaniesDTO> getAllCompanies(){
-
         CompaniesProvider compProvider = new CompaniesProvider();
         ArrayList<Companies> companies = compProvider.getAllCompanies();
 
@@ -106,10 +108,8 @@ public class CompaniesServices {
 
 
         for (Companies comp: companies) {
-
             dto.add(compProvider.getCompanyByID(comp.getId()));
         }
-
         return dto;
     }
 
@@ -134,21 +134,10 @@ public class CompaniesServices {
     public ArrayList<MarketingExpenses> bestMarketing(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
         CompaniesProvider provider = new CompaniesProvider();
         ArrayList<MarketingExpenses> aux = null;
-        try{
+        long initial = Long.parseLong(iDate);
+        long finalDate = Long.parseLong(fDate);
 
-            String fecha1 = iDate;
-            String fecha2 = fDate;
-            SimpleDateFormat f = new SimpleDateFormat("MM-dd-yyyy");
-            Date date1 = (Date)f.parse(fecha1);
-            Date date2 = (Date)f.parse(fecha2);
-            long initial = date1.getTime();
-            long finalDate = date2.getTime();
-
-            aux = provider.getBestMarketingExpenses(initial,finalDate);
-
-        }catch (ParseException e){
-
-        }
+        aux = provider.getBestMarketingExpenses(initial,finalDate);
         return aux;
     }
 
@@ -302,7 +291,7 @@ public class CompaniesServices {
     }
 
     @GET
-    @Path("bestPreriodicExpenses/{initialDate}/{finalDate}")
+    @Path("worstPreriodicExpenses/{initialDate}/{finalDate}")
     @Produces("application/json")
     public ArrayList<PeriodicExpenses> worstPeriodicExpenses(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
         CompaniesProvider provider = new CompaniesProvider();
