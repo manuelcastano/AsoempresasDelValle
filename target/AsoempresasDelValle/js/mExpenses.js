@@ -1,6 +1,6 @@
 const date = document.getElementById('date');
 const value = document.getElementById('value');
-const idCompanie = document.getElementById('idCompanie');
+const idCompany = document.getElementById('idCompany');
 const add = document.getElementById('add');
 
 const anadir = () =>{
@@ -8,7 +8,7 @@ const anadir = () =>{
         id:0,
         value: value.value,
         date: date.value,
-        idCompanie: idCompanie.value
+        idCompany: idCompany.value
     };
     console.log(JSON.stringify(indicatorObj));
 

@@ -141,3 +141,21 @@ tr, td {
 }
 
 
+.companieComponent{
+    background: #eeeeee;
+    margin: 10px auto;
+    width: 400px;
+    padding: 20px;
+    position: relative;
+}
+
+.delBtn{
+    position: absolute;
+    top:0;
+}
+
+.nombreCompany{
+    font-weight: bolder;
+    color: lightsteelblue;
+    cursor: pointer;
+}
