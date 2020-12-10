@@ -3,11 +3,18 @@ package model.dto;
 public class EmployeesDTO {
 
     private int id;
-    private String userName;
+    private String user;
     private String password;
     private CompaniesDTO company;
 
     public EmployeesDTO() {
+    }
+
+    public EmployeesDTO(int id, String user, String password, CompaniesDTO company) {
+        this.id = id;
+        this.user = user;
+        this.password = password;
+        this.company = company;
     }
 
     public int getId() {
@@ -18,12 +25,12 @@ public class EmployeesDTO {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUser() {
+        return user;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser(String userName) {
+        this.user = userName;
     }
 
     public String getPassword() {

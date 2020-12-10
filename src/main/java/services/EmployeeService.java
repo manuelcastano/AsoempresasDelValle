@@ -30,16 +30,20 @@ public class EmployeeService {
         return new Response("Operacion exitosa");
     }
 
-    /*
-    @POST
+
+    @GET
     @Path("login")
     @Consumes("application/json")
     @Produces("application/json")
-    public boolean login(String user, String password){
+    public Response login(EmployeesDTO employeesDTO){
+        Response response = new Response("Operacion fallo");
         EmployeeProvider employeeProvider = new EmployeeProvider();
-        return employeeProvider.login(user, password);
+        if(employeeProvider.login(employeesDTO.getUser(), employeesDTO.getPassword())){
+            response.setMessage("Operacion exitosa");
+        }
+        return response;
     }
-    **/
+
     /*
     @GET
     @Path("login")

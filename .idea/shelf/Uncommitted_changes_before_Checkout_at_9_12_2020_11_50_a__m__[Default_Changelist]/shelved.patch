@@ -1,0 +1,70 @@
+Index: .idea/modules.xml
+===================================================================
+--- .idea/modules.xml	(revision 2c3aa80301737425f4e869c5dbadfa2263b97c0f)
++++ .idea/modules.xml	(revision 2c3aa80301737425f4e869c5dbadfa2263b97c0f)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectModuleManager">
+-    <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/AsoempresasDelValle.iml" filepath="$PROJECT_DIR$/.idea/AsoempresasDelValle.iml" />
+-    </modules>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/webContexts.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/webContexts.xml	(date 1607532460650)
++++ .idea/webContexts.xml	(date 1607532460650)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="WebContextManager">
++    <option name="state">
++      <map>
++        <entry key="file://$PROJECT_DIR$/src/main/webapp/login.html" value="file://$PROJECT_DIR$/src/main/webapp" />
++      </map>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/jsLibraryMappings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/jsLibraryMappings.xml	(date 1607532460570)
++++ .idea/jsLibraryMappings.xml	(date 1607532460570)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="JavaScriptLibraryMappings">
++    <file url="file://$PROJECT_DIR$" libraries="{bootstrap}" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/AsoempresasDelValle.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\" inherit-compiler-output=\"true\">\r\n    <exclude-output />\r\n    <content url=\"file://$MODULE_DIR$\" />\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/AsoempresasDelValle.iml	(revision 2c3aa80301737425f4e869c5dbadfa2263b97c0f)
++++ .idea/AsoempresasDelValle.iml	(date 1607532460311)
+@@ -1,9 +1,2 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<module type="JAVA_MODULE" version="4">
+-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+-    <exclude-output />
+-    <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-</module>
+\ No newline at end of file
++<module type="JAVA_MODULE" version="4" />
+\ No newline at end of file

@@ -24,7 +24,7 @@ public class EmployeeProvider {
 
     public Employee map(EmployeesDTO employeeDTO) {
         Employee employee = new Employee();
-        employee.setUser(employeeDTO.getUserName());
+        employee.setUser(employeeDTO.getUser());
         employee.setPassword(employeeDTO.getPassword());
         return employee;
     }
@@ -33,7 +33,9 @@ public class EmployeeProvider {
         boolean result = false;
         MySQLConnection connection = pool.getConexion();
         try {
-            String sql = "SELECT user FROM employees WHERE employees.user = " + user + "AND employees.password =" + password;
+            String sql = "SELECT user FROM employees WHERE employees.user= '$user' AND employees.password= '$password'";
+            sql.replace("$user", ""+user);
+            sql.replace("$password", ""+password);
             ResultSet resultSet = connection.Query(sql);
 
             while (resultSet.next()) {
