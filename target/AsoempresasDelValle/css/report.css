@@ -1,0 +1,46 @@
+#body{
+    background-color: black;
+    background: -webkit-linear-gradient(to right, #ffd45293, #544a7d91), url("../assets/stadistics.jpg");  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffd4528a, #544a7d8f), url("../assets/stadistics.jpg"); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    
+
+    
+    
+    
+    
+    margin: 12% auto;
+
+}
+
+#principal{
+    
+}
+
+#stadistics{
+    margin: auto;
+    align-items: center;
+    min-width: 1000px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#filtros{
+
+    display: flex;
+    flex-direction: row;
+    margin-top: 10%;
+    width: auto;
+    padding-right: 25px;
+    left: -2.8%;
+}
+
+#filtros label{
+    width: 80px;
+    padding-right: 10%;
+    padding-left: 8%;
+}
