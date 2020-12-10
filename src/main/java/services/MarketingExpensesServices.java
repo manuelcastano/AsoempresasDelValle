@@ -36,11 +36,12 @@ public class MarketingExpensesServices {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("change/{id}")
+    @Consumes("application/json")
     public Response updateMarketingExpenses(@PathParam("id") String id, MarketingExpensesDTO marke){
         MarketingExpensesProvider provider = new MarketingExpensesProvider();
         if(provider.updateMarketingExtenses(Integer.parseInt(id),provider.mapFromDTO(marke))){
-            return new Response("Operacion exitosa" + "xsadsad");
+            return new Response("Operacion exitosa");
         }else{
             return new Response("No se pudo hacer");
         }

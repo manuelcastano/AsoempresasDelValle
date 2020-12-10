@@ -276,7 +276,7 @@ public class CompaniesProvider {
         ArrayList<Companies> compañias = getAllCompanies();
 
         for(int i = 0; i < compañias.size() & !t ;i++){
-
+            System.out.println(compañias.get(i).getId());
             if(compañias.get(i).getId() == id){
                 t = true;
             }

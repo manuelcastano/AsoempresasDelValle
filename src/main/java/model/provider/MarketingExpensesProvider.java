@@ -95,7 +95,7 @@ public class MarketingExpensesProvider {
         try{
             mark.setValue(marketing.getValue());
             String msj = marketing.getDate();
-            SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat f = new SimpleDateFormat("MM/DD/yyyy");
             Date d = (Date)f.parse(msj);
             long milliseconds = d.getTime();
             mark.setDate(milliseconds);

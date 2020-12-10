@@ -31,11 +31,12 @@ public class IndebtednessServices {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("change/{id}")
+    @Consumes("application/json")
     public Response updateMarketingExpenses(@PathParam("id") String id, IndebtednessDTO ine){
         IndebtednessProvider provider = new IndebtednessProvider();
         if(provider.updateIndebtedness(Integer.parseInt(id),provider.mapFromDTO(ine))){
-            return new Response("Operacion exitosa" + "xsadsad");
+            return new Response("Operacion exitosa");
         }else{
             return new Response("No se pudo hacer");
         }
