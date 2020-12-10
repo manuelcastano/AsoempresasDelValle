@@ -1,6 +1,6 @@
 const name = document.getElementsByName('employee');
 const password = document.getElementsByName('password');
-const button = document.getElementsByName('add');
+const button = document.getElementsByName('button');
 
 const addEmplee = ()=>{
     let employeeObj = {
@@ -14,7 +14,7 @@ const addEmplee = ()=>{
             getAll();
         }
     });
-    xhr.open('POST', 'inisertelink');
+    xhr.open('POST', 'http//localhost:8080/AsoempresasDelValle/api/employee/create');
     xhr.setRequestHeader('Content-type', 'application/json');
     xhr.send(JSON.stringify(employeeObj));
     name.value = '';

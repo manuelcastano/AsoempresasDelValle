@@ -18,7 +18,7 @@ const anadir = () =>{
             console.log(xhr.responseText);
         }
     });
-    xhr.open('POST','http//localhost:8080/AsoempresasDelValle/api/mes/create');
+    xhr.open('POST','http//localhost:8080/AsoempresasDelValle/api/Ine/create');
     xhr.setRequestHeader('content-type', 'application/json');
     xhr.send(JSON.stringify(indicatorObj));
 };
