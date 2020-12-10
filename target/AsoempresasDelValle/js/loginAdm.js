@@ -6,16 +6,23 @@ const loginAdm = ()=>{
 	     password: this.passW.value
 	 }
 	    console.log(JSON.stringify(admObj));
-	    let paso = true;
+	    let valido = false;
 	    let xhr = new XMLHttpRequest();
 	    xhr.addEventListener('readystatechange', ()=>{
-	        console.log(xhr.responseText);
+	    	if(xhr.readyState===4){
+	    		valido = true;
+	    		console.log(xhr.responseText);
+	    	}
 	    });
+	    if(valido)
+	    	window.location.href = 'viewEmployees.html';
+	    else
+	        alert("Usuario no identificado como Administrador");
 		  
 	    xhr.open('POST', 'http://localhost:8080/AsoempresasDelValle/api/employee/login')
 	    xhr.setRequestHeader('Content-Type', 'application/json');
 	    xhr.send(JSON.stringify(admObj));
-        window.location.href = 'viewEmployees.html';
+        
    
 }
 

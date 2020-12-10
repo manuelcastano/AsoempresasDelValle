@@ -9,8 +9,8 @@ body{
     margin: 0 auto;
     
     /* Cambiar la imagen "Company"*/
-    background: -webkit-linear-gradient(to right, #bfe8ff93, #aa99f091), url("assets/company.jpg");  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #b9eeff5b, #afa1e78f), url("assets/company.jpg"); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #bfe8ff93, #aa99f091);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #b9eeff5b, #afa1e78f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
     background-attachment: fixed;
     background-position: center;

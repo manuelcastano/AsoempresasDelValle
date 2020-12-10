@@ -30,7 +30,7 @@ public class EmployeeService {
         return new Response("Operacion exitosa");
     }
 
-    @GET
+    @POST
     @Path("login")
     @Consumes("application/json")
     @Produces("application/json")

@@ -13,7 +13,7 @@ xhr.addEventListener('readystatechange', ()=>{
         }
     }
 });
-    xhr.open('GET','http//localhost:8080/AsoempresasDelValle/api/company/getAllCompanies')
+    xhr.open('GET','http//localhost:8080/AsoempresasDelValle/api/company/getallcompanies')
     xhr.send();
 };
 getAllCompanies();

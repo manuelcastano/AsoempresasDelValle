@@ -2,7 +2,6 @@ class CompanyView{
 
     constructor(company){
         this.company = company;
-
     }
 
     goToEditor = ()=>{
