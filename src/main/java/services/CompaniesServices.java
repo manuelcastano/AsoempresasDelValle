@@ -132,10 +132,20 @@ public class CompaniesServices {
     public ArrayList<MarketingExpenses> bestMarketing(@PathParam("initialDate") String iDate, @PathParam("finalDate") String fDate){
         CompaniesProvider provider = new CompaniesProvider();
         ArrayList<MarketingExpenses> aux = null;
-        long initial = Long.parseLong(iDate);
-        long finalDate = Long.parseLong(fDate);
+        try {
+            String fecha1 = iDate;
+            String fecha2 = fDate;
+            SimpleDateFormat f = new SimpleDateFormat("MM-dd-yyyy");
+            Date date1 = null;
+            date1 = (Date)f.parse(fecha1);
+            Date date2 = (Date)f.parse(fecha2);
+            long initial = date1.getTime();
+            long finalDate = date2.getTime();
+            aux = provider.getBestMarketingExpenses(initial,finalDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
-        aux = provider.getBestMarketingExpenses(initial,finalDate);
         return aux;
     }
 

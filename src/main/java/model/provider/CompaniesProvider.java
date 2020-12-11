@@ -77,11 +77,11 @@ public class CompaniesProvider {
 
     public ArrayList<Surveys> getBest(long initial, long finald){
         SurveyProvider provider = new SurveyProvider();
-        int dias = (int) ((finald-initial)/8640000);
+        int dias = (int) ((finald-initial)/86400000);
         long diaSiguiente = initial;
         ArrayList<Surveys> mejorPorDia = new ArrayList<>();
         for(int j = 0; j < dias; j++){
-            ArrayList<Surveys> ref = provider.surveysInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            ArrayList<Surveys> ref = provider.surveysInTheRange(diaSiguiente, diaSiguiente + 86400000);
             Surveys bestSurvey = ref.get(0);
             for(int i=0;i<ref.size();i++){
                 if(ref.get(i).getSatisfactionLevel()>bestSurvey.getSatisfactionLevel()){
@@ -89,18 +89,18 @@ public class CompaniesProvider {
                 }
             }
             mejorPorDia.add(bestSurvey);
-            diaSiguiente += 8640000;
+            diaSiguiente += 86400000;
         }
         return mejorPorDia;
     }
 
     public ArrayList<Surveys> getWorst(long initial, long finald){
         SurveyProvider provider = new SurveyProvider();
-        int dias = (int) ((finald-initial)/8640000);
+        int dias = (int) ((finald-initial)/86400000);
         long diaSiguiente = initial;
         ArrayList<Surveys> peorPorDia = new ArrayList<>();
         for(int j = 0; j < dias; j++){
-            ArrayList<Surveys> ref = provider.surveysInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            ArrayList<Surveys> ref = provider.surveysInTheRange(diaSiguiente, diaSiguiente + 86400000);
             Surveys bestSurvey = ref.get(0);
             for(int i=0;i<ref.size();i++){
                 if(ref.get(i).getSatisfactionLevel()<bestSurvey.getSatisfactionLevel()){
@@ -108,18 +108,18 @@ public class CompaniesProvider {
                 }
             }
             peorPorDia.add(bestSurvey);
-            diaSiguiente += 8640000;
+            diaSiguiente += 86400000;
         }
         return peorPorDia;
     }
 
     public ArrayList<Surveys> getAverage(long initial, long finald){
         SurveyProvider provider = new SurveyProvider();
-        int dias = (int) ((finald-initial)/8640000);
+        int dias = (int) ((finald-initial)/86400000);
         long diaSiguiente = initial;
         ArrayList<Surveys> promedioPorDia = new ArrayList<>();
         for(int j = 0; j < dias; j++){
-            ArrayList<Surveys> ref = provider.surveysInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            ArrayList<Surveys> ref = provider.surveysInTheRange(diaSiguiente, diaSiguiente + 86400000);
             int valor = 0;
             for(int i=0;i<ref.size();i++){
                 valor += ref.get(i).getSatisfactionLevel();
@@ -129,7 +129,7 @@ public class CompaniesProvider {
             s.setSatisfactionLevel(valor);
             s.setDate(diaSiguiente);
             promedioPorDia.add(s);
-            diaSiguiente += 8640000;
+            diaSiguiente += 86400000;
         }
         return promedioPorDia;
 
@@ -138,34 +138,38 @@ public class CompaniesProvider {
 
     public ArrayList<MarketingExpenses> getBestMarketingExpenses(long initial, long finald){
         MarketingExpensesProvider provider = new MarketingExpensesProvider();
-        int dias = (int) ((finald-initial)/8640000);
+        long dias = (long) ((finald-initial)/86400000);
         long diaSiguiente = initial;
         ArrayList<MarketingExpenses> mejorPorDia = new ArrayList<MarketingExpenses>();
         for(int j = 0; j < dias; j++){
-            ArrayList<MarketingExpenses> ref = provider.marketingInTheRange(diaSiguiente, diaSiguiente + 8640000);
-            MarketingExpenses bestMarketing = null;
-            if(!ref.isEmpty()){
-                bestMarketing = ref.get(0);
-            }
-            for(int i=0;i<ref.size();i++){
-                if(ref.get(i).getValue()>bestMarketing.getValue()){
-                    bestMarketing = ref.get(i);
+            ArrayList<MarketingExpenses> ref = provider.marketingInTheRange(diaSiguiente, diaSiguiente + 86400000);
+            if(ref.size() > 0){
+                MarketingExpenses bestMarketing = null;
+                if(!ref.isEmpty()){
+                    bestMarketing = ref.get(0);
                 }
+                for(int i=0;i<ref.size();i++){
+                    if(ref.get(i).getValue()>bestMarketing.getValue()){
+                        bestMarketing = ref.get(i);
+                    }
+                }
+                mejorPorDia.add(bestMarketing);
+                diaSiguiente += 86400000;
+            }else{
+                diaSiguiente += 86400000;
             }
-            mejorPorDia.add(bestMarketing);
-            diaSiguiente += 8640000;
+
         }
-        System.out.println(mejorPorDia.size());
         return mejorPorDia;
     }
 
     public ArrayList<MarketingExpenses> getWorstMarketingExpenses(long initial, long finald){
         MarketingExpensesProvider provider = new MarketingExpensesProvider();
-        int dias = (int) ((finald-initial)/8640000);
+        int dias = (int) ((finald-initial)/86400000);
         long diaSiguiente = initial;
         ArrayList<MarketingExpenses> peorPorDia = new ArrayList<MarketingExpenses>();
         for(int j = 0; j < dias; j++){
-            ArrayList<MarketingExpenses> ref = provider.marketingInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            ArrayList<MarketingExpenses> ref = provider.marketingInTheRange(diaSiguiente, diaSiguiente + 86400000);
             MarketingExpenses bestMarketing = ref.get(0);
             for(int i=0;i<ref.size();i++){
                 if(ref.get(i).getValue()<bestMarketing.getValue()){
@@ -173,18 +177,18 @@ public class CompaniesProvider {
                 }
             }
             peorPorDia.add(bestMarketing);
-            diaSiguiente += 8640000;
+            diaSiguiente += 86400000;
         }
         return peorPorDia;
     }
 
     public ArrayList<MarketingExpenses> getAverageMarketingExpenses(long initial, long finald){
         MarketingExpensesProvider provider = new MarketingExpensesProvider();
-        int dias = (int) ((finald-initial)/8640000);
+        int dias = (int) ((finald-initial)/86400000);
         long diaSiguiente = initial;
         ArrayList<MarketingExpenses> promedioPorDia = new ArrayList<MarketingExpenses>();
         for(int j = 0; j < dias; j++){
-            ArrayList<MarketingExpenses> ref = provider.marketingInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            ArrayList<MarketingExpenses> ref = provider.marketingInTheRange(diaSiguiente, diaSiguiente + 86400000);
             int valor = 0;
             for(int i=0;i<ref.size();i++){
                 valor += ref.get(i).getValue();
@@ -194,7 +198,7 @@ public class CompaniesProvider {
             s.setValue(valor);
             s.setDate(diaSiguiente);
             promedioPorDia.add(s);
-            diaSiguiente += 8640000;
+            diaSiguiente += 86400000;
         }
         return promedioPorDia;
     }
@@ -202,11 +206,11 @@ public class CompaniesProvider {
     public ArrayList<Indebtedness> getBestIndebtedness(long initial, long finald){
 
         IndebtednessProvider provider = new IndebtednessProvider();
-        int dias = (int) ((finald-initial)/8640000);
+        int dias = (int) ((finald-initial)/86400000);
         long diaSiguiente = initial;
         ArrayList<Indebtedness> mejorPorDia = new ArrayList<Indebtedness>();
         for(int j = 0; j < dias; j++){
-            ArrayList<Indebtedness> ref = provider.indebtednessInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            ArrayList<Indebtedness> ref = provider.indebtednessInTheRange(diaSiguiente, diaSiguiente + 86400000);
             Indebtedness bestIndebtedness = ref.get(0);
             for(int i=0;i<ref.size();i++){
                 if(ref.get(i).getValue()>bestIndebtedness.getValue()){
@@ -214,7 +218,7 @@ public class CompaniesProvider {
                 }
             }
             mejorPorDia.add(bestIndebtedness);
-            diaSiguiente += 8640000;
+            diaSiguiente += 86400000;
         }
         return mejorPorDia;
 
@@ -222,11 +226,11 @@ public class CompaniesProvider {
 
     public ArrayList<Indebtedness> getWorstIndebtedness(long initial, long finald){
         IndebtednessProvider provider = new IndebtednessProvider();
-        int dias = (int) ((finald-initial)/8640000);
+        int dias = (int) ((finald-initial)/86400000);
         long diaSiguiente = initial;
         ArrayList<Indebtedness> peorPorDia = new ArrayList<Indebtedness>();
         for(int j = 0; j < dias; j++){
-            ArrayList<Indebtedness> ref = provider.indebtednessInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            ArrayList<Indebtedness> ref = provider.indebtednessInTheRange(diaSiguiente, diaSiguiente + 86400000);
             Indebtedness bestIndebtedness = ref.get(0);
             for(int i=0;i<ref.size();i++){
                 if(ref.get(i).getValue()<bestIndebtedness.getValue()){
@@ -234,18 +238,18 @@ public class CompaniesProvider {
                 }
             }
             peorPorDia.add(bestIndebtedness);
-            diaSiguiente += 8640000;
+            diaSiguiente += 86400000;
         }
         return peorPorDia;
     }
 
     public ArrayList<Indebtedness> getAverageIndebtedness(long initial, long finald){
         IndebtednessProvider provider = new IndebtednessProvider();
-        int dias = (int) ((finald-initial)/8640000);
+        int dias = (int) ((finald-initial)/86400000);
         long diaSiguiente = initial;
         ArrayList<Indebtedness> promedioPorDia = new ArrayList<Indebtedness>();
         for(int j = 0; j < dias; j++){
-            ArrayList<Indebtedness> ref = provider.indebtednessInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            ArrayList<Indebtedness> ref = provider.indebtednessInTheRange(diaSiguiente, diaSiguiente + 86400000);
             int valor = 0;
             for(int i=0;i<ref.size();i++){
                 valor += ref.get(i).getValue();
@@ -255,7 +259,7 @@ public class CompaniesProvider {
             s.setValue(valor);
             s.setDate(diaSiguiente);
             promedioPorDia.add(s);
-            diaSiguiente += 8640000;
+            diaSiguiente += 86400000;
         }
         return promedioPorDia;
     }
@@ -315,11 +319,11 @@ public class CompaniesProvider {
     public ArrayList<PeriodicExpenses> getBestPeriodicExpenses(long initial, long finalDate) {
 
         PeriodicExpensesProvider provider= new PeriodicExpensesProvider();
-        int dias = (int) ((finalDate-initial)/8640000);
+        int dias = (int) ((finalDate-initial)/86400000);
         long diaSiguiente = initial;
         ArrayList<PeriodicExpenses> mejorPorDia = new ArrayList<PeriodicExpenses>();
         for(int j = 0; j < dias; j++){
-            ArrayList<PeriodicExpenses> ref = provider.periodicExpensesInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            ArrayList<PeriodicExpenses> ref = provider.periodicExpensesInTheRange(diaSiguiente, diaSiguiente + 86400000);
             PeriodicExpenses bestPeriodicExpenses = ref.get(0);
             for(int i=0;i<ref.size();i++){
                 if(ref.get(i).getValue()>bestPeriodicExpenses.getValue()){
@@ -327,7 +331,7 @@ public class CompaniesProvider {
                 }
             }
             mejorPorDia.add(bestPeriodicExpenses);
-            diaSiguiente += 8640000;
+            diaSiguiente += 86400000;
         }
         return mejorPorDia;
     }
@@ -335,11 +339,11 @@ public class CompaniesProvider {
     public ArrayList<PeriodicExpenses> getWorstPeriodicExpenses(long initial, long finalDate) {
 
         PeriodicExpensesProvider provider = new PeriodicExpensesProvider();
-        int dias = (int) ((finalDate-initial)/8640000);
+        int dias = (int) ((finalDate-initial)/86400000);
         long diaSiguiente = initial;
         ArrayList<PeriodicExpenses> peorPorDia = new ArrayList<PeriodicExpenses>();
         for(int j = 0; j < dias; j++){
-            ArrayList<PeriodicExpenses> ref = provider.periodicExpensesInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            ArrayList<PeriodicExpenses> ref = provider.periodicExpensesInTheRange(diaSiguiente, diaSiguiente + 86400000);
             PeriodicExpenses bestIndebtedness = ref.get(0);
             for(int i=0;i<ref.size();i++){
                 if(ref.get(i).getValue()<bestIndebtedness.getValue()){
@@ -347,7 +351,7 @@ public class CompaniesProvider {
                 }
             }
             peorPorDia.add(bestIndebtedness);
-            diaSiguiente += 8640000;
+            diaSiguiente += 86400000;
         }
         return peorPorDia;
     }
@@ -355,11 +359,11 @@ public class CompaniesProvider {
     public ArrayList<PeriodicExpenses> getAveragePeriodicExpenses(long initial, long finalDate) {
 
         PeriodicExpensesProvider provider = new PeriodicExpensesProvider();
-        int dias = (int) ((finalDate-initial)/8640000);
+        int dias = (int) ((finalDate-initial)/86400000);
         long diaSiguiente = initial;
         ArrayList<PeriodicExpenses> promedioPorDia = new ArrayList<PeriodicExpenses>();
         for(int j = 0; j < dias; j++){
-            ArrayList<PeriodicExpenses> ref = provider.periodicExpensesInTheRange(diaSiguiente, diaSiguiente + 8640000);
+            ArrayList<PeriodicExpenses> ref = provider.periodicExpensesInTheRange(diaSiguiente, diaSiguiente + 86400000);
             int valor = 0;
             for(int i=0;i<ref.size();i++){
                 valor += ref.get(i).getValue();
@@ -369,7 +373,7 @@ public class CompaniesProvider {
             s.setValue(valor);
             s.setDate(diaSiguiente);
             promedioPorDia.add(s);
-            diaSiguiente += 8640000;
+            diaSiguiente += 86400000;
         }
         return promedioPorDia;
 

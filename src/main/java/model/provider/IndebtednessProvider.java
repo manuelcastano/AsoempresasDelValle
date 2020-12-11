@@ -86,7 +86,7 @@ public class IndebtednessProvider {
         try{
             in.setValue(indeb.getValue());
             String msj = indeb.getDate();
-            SimpleDateFormat f = new SimpleDateFormat("MM/DD/yyyy");
+            SimpleDateFormat f = new SimpleDateFormat("MM-DD-yyyy");
             Date d = (Date)f.parse(msj);
             long milliseconds = d.getTime();
             in.setDate(milliseconds);

@@ -3,16 +3,16 @@ package model.dto;
 public class ReportsDTO {
 
     private int id;
-    private String startDate;
+    private String start_Date;
     private String purchaseDate;
     private CompaniesDTO companies;
 
     public ReportsDTO() {
     }
 
-    public ReportsDTO(int id, String startDate, String purchaseDate, CompaniesDTO companies) {
+    public ReportsDTO(int id, String start_Date, String purchaseDate, CompaniesDTO companies) {
         this.id = id;
-        this.startDate = startDate;
+        this.start_Date = start_Date;
         this.purchaseDate = purchaseDate;
         this.companies = companies;
     }
@@ -25,12 +25,12 @@ public class ReportsDTO {
         this.id = id;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getStart_Date() {
+        return start_Date;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setStart_Date(String startDate) {
+        this.start_Date = startDate;
     }
 
     public String getPurchaseDate() {
