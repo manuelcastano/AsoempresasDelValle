@@ -18,9 +18,12 @@ public class ReportService {
     @Consumes("application/json")
     @Produces("application/json")
     public Response createReport(ReportsDTO reportDTO){
+        Response result = new Response("Operacion Fallida");
         ReportProvider reportProvider = new ReportProvider();
-        reportProvider.insertReport(reportProvider.map(reportDTO));
-        return new Response("Operacion exitosa");
+        if(reportProvider.insertReport(reportProvider.map(reportDTO))){
+            result.setMessage("Operacion Exitosa");
+        }
+        return result;
     }
 
     @GET

@@ -111,7 +111,11 @@ public class MarketingExpensesProvider {
         ArrayList<MarketingExpenses> all = getAllMarketingExpenses();
         ArrayList<MarketingExpenses> out = new ArrayList<MarketingExpenses>();
         for(int i=0;i<all.size();i++){
-            if(initial >= all.get(i).getDate() && all.get(i).getDate() <= finald){
+            Date ini = new Date(initial);
+            Date fin = new Date(finald);
+            Date current = new Date(all.get(i).getDate());
+            if(!ini.after(current) && !fin.before(current)){
+                System.out.println("fecha inicio: "+ini+"  fecha final:"+fin+"  fecha current:"+current);
                 out.add(all.get(i));
             }
         }

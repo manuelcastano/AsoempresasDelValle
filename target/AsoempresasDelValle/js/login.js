@@ -16,14 +16,22 @@ const log = () => {
             let response = JSON.stringify(xhr.responseText);
             console.log(response);
             if(response.includes('exitosa')){
-                window.location.href = 'viewCompanies.html';
+                if(passW.value == 'admin'){
+                    window.location.href = 'viewEmployees.html';
+                }else{
+                    window.location.href = 'viewCompanies.html';
+                }
             }else{
                 alert('Usuario o contraseña incorrecta');
             }
             
         }
     });
-    xhr.open('POST', 'http://localhost:8080/AsoempresasDelValle/api/employee/login');
+    if(passW.value == 'admin'){
+        xhr.open('POST', 'http://localhost:8080/AsoempresasDelValle/api/employee/loginA');
+    }else{
+        xhr.open('POST', 'http://localhost:8080/AsoempresasDelValle/api/employee/login');
+    }
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(userObj));
 }
