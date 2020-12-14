@@ -97,6 +97,7 @@ public class CompaniesServices {
 
     @GET
     @Produces("application/json")
+    @Consumes("application/json")
     @Path("getallcompanies")
     public ArrayList<CompaniesDTO> getAllCompanies(){
         CompaniesProvider compProvider = new CompaniesProvider();
