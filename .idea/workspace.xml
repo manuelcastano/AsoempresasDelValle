@@ -5,6 +5,9 @@
       <artifact name="AsoempresasDelValle:war" />
     </artifacts-to-build>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -25,9 +28,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0d73833-3f6a-42ec-82d7-e064c09c5625" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_12_2020_11_50_a__m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_12_2020_11_50_a__m___Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/report.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/CompaniesServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/CompaniesServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/styleEmployees.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/styleEmployees.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/companyView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/companyView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/viewCompanies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/viewCompanies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/viewCompanies.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/viewCompanies.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/AsoempresasDelValle.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/AsoempresasDelValle.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/AsoempresasDelValle/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/AsoempresasDelValle/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,17 +60,38 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="ProjectId" id="1ler8JqW630CfvwrUfAfKmrs2I7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.39">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="viewCompanies.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/AsoempresasDelValle/viewCompanies.html">
+      <method v="2" />
     </configuration>
     <configuration name="Tomcat 9.0.39" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.39" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="BROWSER_ID" value="53e2f627-b1a7-4dfa-bfa7-5b83cc034776" />
@@ -136,9 +166,26 @@
         </option>
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.viewCompanies.html" />
+      </list>
+    </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b0d73833-3f6a-42ec-82d7-e064c09c5625" name="Default Changelist" comment="" />
+      <created>1607968239416</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607968239416</updated>
+      <workItem from="1607968242513" duration="3978000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

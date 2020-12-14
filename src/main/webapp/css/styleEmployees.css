@@ -160,3 +160,15 @@ tr, td {
     color: lightsteelblue;
     cursor: pointer;
 }
+
+.companyComponent{
+    background: #95d4ec;
+    margin: 10px auto;
+    width: 50%;
+}
+
+.nombreC{
+    font-weight: bolder;
+    color: #002838;
+    cursor: pointer;
+}

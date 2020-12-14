@@ -97,14 +97,13 @@ public class CompaniesServices {
 
     @GET
     @Produces("application/json")
+    @Consumes("application/json")
     @Path("getallcompanies")
     public ArrayList<CompaniesDTO> getAllCompanies(){
         CompaniesProvider compProvider = new CompaniesProvider();
         ArrayList<Companies> companies = compProvider.getAllCompanies();
 
         ArrayList<CompaniesDTO> dto = new ArrayList<CompaniesDTO>();
-
-
         for (Companies comp: companies) {
             dto.add(compProvider.getCompanyByID(comp.getId()));
         }

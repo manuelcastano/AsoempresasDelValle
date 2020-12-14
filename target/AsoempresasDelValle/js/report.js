@@ -3,11 +3,12 @@ const fFinal = document.getElementById('FechaInicial');
 const fInicial = document.getElementById('FechaFinal');
 const generarBtn = document.getElementById('generarBtn');
 const guardarBtn = document.getElementById('guardarBtn');
+
 //const company = JSON.parse(window.localStorage.getItem('<<Poner aqui el nombre de la variable del local storage>>')  );
 
 guardarBtn.addEventListener('click', ()=>{
 
-    const aConvertir = document.body;
+    /*const aConvertir = document.body;
     html2pdf().set({
         margin:1,
         filename: 'documento.pdf',
@@ -27,14 +28,14 @@ guardarBtn.addEventListener('click', ()=>{
     })
     .from(aConvertir)
     .save()
-    .catch(err => console.log(err))
+    .catch(err => console.log(err)) */
 });
 
 
 generar = () =>{
 
-    
     guardarBtn.hidden = false;
+    
 }
 
 
