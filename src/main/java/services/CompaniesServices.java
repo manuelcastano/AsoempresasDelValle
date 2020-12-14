@@ -103,8 +103,6 @@ public class CompaniesServices {
         ArrayList<Companies> companies = compProvider.getAllCompanies();
 
         ArrayList<CompaniesDTO> dto = new ArrayList<CompaniesDTO>();
-
-
         for (Companies comp: companies) {
             dto.add(compProvider.getCompanyByID(comp.getId()));
         }

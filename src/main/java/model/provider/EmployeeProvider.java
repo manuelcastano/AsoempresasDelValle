@@ -55,29 +55,28 @@ public class EmployeeProvider {
         pool.getConexion().executeSQL(sql);
     }
 
-    public ArrayList<Employee> getAllEmployees() {
-        ArrayList<Employee> employees = new ArrayList<Employee>();
-        MySQLConnection mySQLConnection = pool.getConexion();
-        String sql = "SELECT * FROM employees ";
-        ResultSet resultSet = mySQLConnection.Query(sql);
+   public ArrayList<EmployeesDTO> getAllEmployees() {
+       ArrayList<EmployeesDTO> employees = new ArrayList<>();
+       MySQLConnection mySQLConnection = pool.getConexion();
+       String sql = "SELECT * FROM employees ";
+       ResultSet resultSet = mySQLConnection.Query(sql);
 
-        while (true) {
-            try {
-                while (resultSet.next()) {
-                    employees.add(new Employee(
-                            resultSet.getInt(1),
-                            resultSet.getString(2),
-                            resultSet.getString(3))
-                    );
-                }
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-            mySQLConnection.disconnect();
-            return employees;
-        }
-    }
-
+       while (true) {
+           try {
+               while (resultSet.next()) {
+                   employees.add(new EmployeesDTO(
+                           resultSet.getInt(1),
+                           resultSet.getString(2),
+                           resultSet.getString(3))
+                   );
+               }
+           } catch (SQLException throwables) {
+               throwables.printStackTrace();
+           }
+           mySQLConnection.disconnect();
+           return employees;
+       }
+   }
 
     public boolean loginAdmin(String password) {
         boolean result = false;

@@ -13,16 +13,11 @@ class CompanyView{
         component.className = 'companyComponent';
         let nombre = document.createElement('h2');
         nombre.className='nombreCompany';
-        let delBtn = document.createElement('button');
-        delBtn.innerHTML = 'X';
-        delBtn.className ='delBtn';
 
         nombre.innerHTML = this.company.nombre;
 
         nombre.addEventListener('click', this.goToEditor);
         component.appendChild(nombre);
-        component.appendChild(delBtn);
-        
         
 
         return component;

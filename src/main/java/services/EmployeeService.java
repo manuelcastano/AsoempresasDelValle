@@ -1,11 +1,16 @@
 package services;
 
+import entity.Companies;
+import entity.Employee;
+import model.dto.CompaniesDTO;
 import model.dto.EmployeesDTO;
 import model.dto.Response;
+import model.provider.CompaniesProvider;
 import model.provider.EmployeeProvider;
 
 import javax.ejb.Stateless;
 import javax.ws.rs.*;
+import java.util.ArrayList;
 
 
 @Path("employee")
@@ -59,6 +64,16 @@ public class EmployeeService {
         }else{
             return new Response("Operacion fallida");
         }
+    }
+
+    @GET
+    @Consumes("application/json")
+    @Produces("application/json")
+    @Path("getallemployees")
+    public ArrayList<EmployeesDTO> getAllEmployees(){
+        EmployeeProvider empProvider = new EmployeeProvider();
+        ArrayList<EmployeesDTO> employees = empProvider.getAllEmployees();
+        return employees;
     }
 
 }

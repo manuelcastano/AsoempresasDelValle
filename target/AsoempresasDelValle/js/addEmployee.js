@@ -1,24 +1,24 @@
-const name = document.getElementsByName('employee');
-const password = document.getElementsByName('password');
-const button = document.getElementsByName('button');
+const nombre = document.getElementById('nombre');
+const password = document.getElementById('password');
+const regBtn = document.getElementById('regBtn')
 
-const addEmplee = ()=>{
+const registrar = ()=>{
     let employeeObj = {
         id: 0,
-        user: name.value,
-        password: password.values,
+        user: nombre.value,
+        password: password.value
     };
     let xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', ()=>{
+        console.log(xhr.responseText);
         if(xhr.readyState === 4){
-            getAll();
+            console.log(xhr.responseText);
         }
     });
-    xhr.open('POST', 'http//localhost:8080/AsoempresasDelValle/api/employee/create');
-    xhr.setRequestHeader('Content-type', 'application/json');
+    xhr.open('POST', 'http://localhost:8080/AsoempresasDelValle/api/employee/create');
+    xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(employeeObj));
-    name.value = '';
-    password.values = '';
+ 
 };
 
-button.addEventListener('click', addEmplee);
+regBtn.addEventListener('click', registrar);
