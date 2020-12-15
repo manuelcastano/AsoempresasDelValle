@@ -150,11 +150,6 @@ tr, td {
     position: relative;
 }
 
-.delBtn{
-    position: absolute;
-    top:0;
-}
-
 .nombreCompany{
     font-weight: bolder;
     color: lightsteelblue;
